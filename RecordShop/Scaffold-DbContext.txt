@@ -1,0 +1,12 @@
+﻿Generate Existing Database
+1. 
+Scaffold-DbContext "Data Source=DESKTOP-TEEQPNH;Initial Catalog=VinylRecords;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;" Microsoft.EntityFrameworkCore.SqlServer -ContextDir Data -OutputDir Models
+2.
+Enable-Migrations
+3.
+Add-mMgration
+4.
+Add-Migration InitModel -IgnoreChanges -Force
+5.
+Update-Database
+
