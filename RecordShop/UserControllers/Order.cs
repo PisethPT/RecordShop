@@ -13,6 +13,7 @@ namespace RecordShop.UserControllers
 		char[] trimChars = new char[] { '(', ')', '$' };
 		public decimal previousPaidValue = 1;
 		public decimal previousRemainValue = 1;
+		public int MyProperty { get; set; }
 		public Order()
 		{
 			InitializeComponent();
