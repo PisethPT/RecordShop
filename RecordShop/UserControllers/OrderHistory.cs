@@ -33,13 +33,14 @@ namespace RecordShop.UserControllers
 			{
 				var row = table.NewRow();
 				row[0] = sale.SaleId;
-				row[1] = context.Sellers.FirstOrDefault(s => s.SellerId == sale.SaleId)!.SellerName;
+				row[1] = context.Sellers.FirstOrDefault(s => s.SellerId == sale.SellerId)!.SellerName;
 				row[2] = context.Buyers.FirstOrDefault(b => b.BuyerId == sale.BuyerId)!.BuyerName;
 				row[3] = sale.Amount.ToString("#,###.0");
 				row[4] = sale.Paid?.ToString("C2");
 				row[5] = sale.Remain?.ToString("C2");
 				row[6] = (sale.Paid + sale.Remain)?.ToString("C2");
-				row[7] = sale.Created?.ToShortDateString();
+				row[7] = sale.Created;
+				// row[7] = sale.Created?.ToString("yyyy-MM-dd HH:mm.fff"); // 2024-10-26 17:10:41.020
 
 				table.Rows.Add(row);
 			}
@@ -70,8 +71,10 @@ namespace RecordShop.UserControllers
 			{
 				string name = this.OrderHistoryListTable.Rows[e.RowIndex].Cells[3].Value.ToString()!;
 				int buyerId = context.Buyers.FirstOrDefault(b => b.BuyerName.Equals(name))!.BuyerId;
+				//var created = context.Sales.Where(o => o.BuyerId == buyerId).FirstOrDefault()!.Created;
+				DateTime created = DateTime.Parse(this.OrderHistoryListTable.Rows[e.RowIndex].Cells[8].Value.ToString()!);
 
-				BuyerOrderDetail orderDetail = new BuyerOrderDetail(buyerId, OrderDetail(e.RowIndex));
+				BuyerOrderDetail orderDetail = new BuyerOrderDetail(buyerId, created, OrderDetail(e.RowIndex));
 				orderDetail.ShowDialog();
 			}
 		}
@@ -84,7 +87,21 @@ namespace RecordShop.UserControllers
 			orderHeadInfo.Subtotal = int.Parse(this.OrderHistoryListTable.Rows[rowIndex].Cells[4].Value.ToString()!.Replace(".0",""));
 			orderHeadInfo.Remain = double.Parse(this.OrderHistoryListTable.Rows[rowIndex].Cells[6].Value.ToString()!.Trim('$')!);
 			orderHeadInfo.TotalPayable = double.Parse(this.OrderHistoryListTable.Rows[rowIndex].Cells[7].Value.ToString()!.Trim('$'));
-			orderHeadInfo.OrderDate = DateOnly.Parse(this.OrderHistoryListTable.Rows[rowIndex].Cells[8].Value.ToString()!);
+
+			string dateString = this.OrderHistoryListTable.Rows[rowIndex].Cells[8].Value.ToString()!;
+			DateTime dateTime;
+			bool success = DateTime.TryParse(dateString, out dateTime);
+
+			if (success)
+			{
+				string formattedDate = dateTime.ToString("MM/dd/yyyy");
+				orderHeadInfo.OrderDate = DateOnly.Parse(formattedDate);
+			}
+			else
+			{
+				MessageBox.Show("Invalid date format.");
+			}
+
 
 			return orderHeadInfo;
 		}

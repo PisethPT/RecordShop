@@ -102,9 +102,9 @@
 			label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			label2.Location = new Point(55, 25);
 			label2.Name = "label2";
-			label2.Size = new Size(105, 21);
+			label2.Size = new Size(114, 21);
 			label2.TabIndex = 60;
-			label2.Text = "Order History";
+			label2.Text = "Orders Archive";
 			// 
 			// button7
 			// 

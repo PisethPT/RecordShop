@@ -120,7 +120,16 @@ namespace RecordShop.UserControllers
 			return band;
 		}
 
-		private void BtnSubmit_Click(object sender, EventArgs e) => InsertOrder();
+		private void BtnSubmit_Click(object sender, EventArgs e)
+		{
+			if (FlowOrderContainer.Controls.Count > 0)
+			{
+				InsertOrder();
+				ResetFields();
+			}
+			else
+				MessageBox.Show("Please Add Vinyl for Order.", "Order Warning");
+		}
 
 		private void InsertOrder()
 		{
@@ -275,6 +284,22 @@ namespace RecordShop.UserControllers
 		private void PayableAmount_TextChanged(object sender, EventArgs e)
 		{
 			this.Paid.Value = decimal.Parse(this.PayableAmount.Text.Trim(trimChars));
+		}
+
+		private void BtnCancel_Click(object sender, EventArgs e) => ResetFields();
+
+		private void ResetFields()
+		{
+			this.CbSellerName.SelectedIndex = 0;
+			this.CbBuyerName.SelectedIndex = 0;
+			this.DiscountPrice.Text = "$0.0";
+			this.Paid.Value = 0;
+			this.Remain.Value = 0;
+			RecordShop.Statics.StaticComponents.Subtotal.Text = "0.0";
+			RecordShop.Statics.StaticComponents.PayableAmount.Text = "$0.0";
+			RecordShop.Statics.StaticComponents.PayableAmountDouble = 0d;
+			RecordShop.Statics.StaticComponents.SubtotalInt = 0;
+			RecordShop.Statics.StaticComponents.FlowOrderContainer.Controls.Clear();
 		}
 	}
 }

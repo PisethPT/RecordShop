@@ -245,10 +245,12 @@ public partial class VinylRecordsContext : DbContext
     }
 
      // add procedure
-    public List<OrderDetailByBuyerId> GetOrderDetailByBuyersId(int BuyerId)
+    public List<OrderDetailByBuyerId> GetOrderDetailByBuyersId(int BuyerId, DateTime Created)
     {
-        SqlParameter parameter = new SqlParameter("@BuyerId", BuyerId);
-        return OrderDetailByBuyers.FromSqlRaw("EXEC GetOrderDetailByBuyerId @BuyerId", parameter).ToList();
+		SqlParameter BuyerIdParam = new SqlParameter("@BuyerId", BuyerId);
+        SqlParameter CreatedParam = new SqlParameter("@Created", Created.ToString("MM/dd/yyyy HH:mm:ss"));
+		return OrderDetailByBuyers.FromSqlRaw("EXEC GetOrderDetailByBuyerId @BuyerId, @Created", BuyerIdParam, CreatedParam)
+		                          .ToList();
 	}
 
 	public int ProInsertOrder(int saleId, string sellerName, string buyerName, float amount, float paid, float remain)

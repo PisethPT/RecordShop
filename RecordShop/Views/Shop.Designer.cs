@@ -275,12 +275,12 @@
 			BtnOrderHistoryOption.Name = "BtnOrderHistoryOption";
 			BtnOrderHistoryOption.Size = new Size(280, 51);
 			BtnOrderHistoryOption.TabIndex = 0;
-			BtnOrderHistoryOption.Text = "Order History";
+			BtnOrderHistoryOption.Text = "Orders Archive";
 			BtnOrderHistoryOption.UseVisualStyleBackColor = true;
 			BtnOrderHistoryOption.Click += BtnOrderHistoryOption_Click;
-			BtnOrderHistoryOption.MouseHover += BtnOrderHistoryOption_MouseHover;
-			BtnOrderHistoryOption.MouseLeave += BtnOrderHistoryOption_MouseLeave;
 			BtnOrderHistoryOption.MouseClick += BtnOrderHistoryOption_MouseClick;
+			BtnOrderHistoryOption.MouseLeave += BtnOrderHistoryOption_MouseLeave;
+			BtnOrderHistoryOption.MouseHover += BtnOrderHistoryOption_MouseHover;
 			// 
 			// panel7
 			// 

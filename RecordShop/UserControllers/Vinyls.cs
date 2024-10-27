@@ -1,24 +1,29 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RecordShop.Data;
 using RecordShop.Models;
+using RecordShop.Statics;
 using RecordShop.Views;
 using System.Data;
+
 
 namespace RecordShop.UserControllers
 {
 	public partial class Vinyls : UserControl
 	{
 		private VinylRecordsContext context;
-		private List<Vinyl> vinylRecords;
 		private int vinylDiscountId;
 		string iconDirectoryPath = Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory)!.Parent!.Parent!.Parent!.FullName, "Images");
 		public Vinyls()
 		{
 			InitializeComponent();
+
+			if (this is not null)
+				StaticComponents.SearchField = this.SearchField;
+
 			context = new VinylRecordsContext();
 			this.SearchType.SelectedIndex = 0;
-			vinylRecords = context.Vinyls.ToList();
-			GetAllVinylRecords(vinylRecords);
+			context.Vinyls.ToList();
+			GetAllVinylRecords(context.Vinyls.ToList());
 			GetAllVinylDiscount();
 			this.BtnSubmit.Enabled = false;
 			this.BtnDelete.Visible = false;
@@ -192,7 +197,7 @@ namespace RecordShop.UserControllers
 					GetAllVinylRecords(vinyl);
 				}
 				else
-					GetAllVinylRecords(vinylRecords);
+					GetAllVinylRecords(context.Vinyls.ToList());
 			}
 			else if (searchType == 1)
 			{
@@ -202,7 +207,7 @@ namespace RecordShop.UserControllers
 					GetAllVinylRecords(vinyl);
 				}
 				else
-					GetAllVinylRecords(vinylRecords);
+					GetAllVinylRecords(context.Vinyls.ToList());
 			}
 			else if (searchType == 2)
 			{
@@ -212,7 +217,7 @@ namespace RecordShop.UserControllers
 					GetAllVinylRecords(vinyl);
 				}
 				else
-					GetAllVinylRecords(vinylRecords);
+					GetAllVinylRecords(context.Vinyls.ToList());
 			}
 		}
 

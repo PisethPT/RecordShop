@@ -14,7 +14,6 @@ namespace RecordShop.UserControllers
 			OrderCard orderCard = new OrderCard();
 			OrderCardDetail(orderCard);
 
-
 			if (FlowOrderContainer.Controls.Count > 0)
 			{
 				foreach (OrderCard card in FlowOrderContainer.Controls)

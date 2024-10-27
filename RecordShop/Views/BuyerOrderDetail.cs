@@ -15,14 +15,14 @@ namespace RecordShop.Views
 	public partial class BuyerOrderDetail : Form
 	{
 		private readonly VinylRecordsContext context;
-		public BuyerOrderDetail(int buyerId, OrderHeadInfo orderHeadInfo)
+		public BuyerOrderDetail(int buyerId, DateTime created, OrderHeadInfo orderHeadInfo)
 		{
 			InitializeComponent();
 			context = new VinylRecordsContext();
-			GetOrderDetailByBuyerId(buyerId, orderHeadInfo);
+			GetOrderDetailByBuyerId(buyerId, created, orderHeadInfo);
 		}
 
-		private void GetOrderDetailByBuyerId(int buyerId, OrderHeadInfo orderHeadInfo)
+		private void GetOrderDetailByBuyerId(int buyerId, DateTime created, OrderHeadInfo orderHeadInfo)
 		{
 			int index = 1;
 			DataTable dataTable = new DataTable();
@@ -31,7 +31,7 @@ namespace RecordShop.Views
 			dataTable.Columns.Add("Quantity");
 			dataTable.Columns.Add("Total Price");
 
-			foreach (var item in context.GetOrderDetailByBuyersId(buyerId).ToList())
+			foreach (var item in context.GetOrderDetailByBuyersId(buyerId, created).ToList())
 			{
 				var row = dataTable.NewRow();
 				row[0] = index++;

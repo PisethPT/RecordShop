@@ -285,6 +285,7 @@ namespace RecordShop.UserControllers
 			BtnCancel.Text = "Cancel";
 			BtnCancel.TextAlign = ContentAlignment.MiddleRight;
 			BtnCancel.UseVisualStyleBackColor = true;
+			BtnCancel.Click += BtnCancel_Click;
 			// 
 			// button2
 			// 

@@ -1,5 +1,7 @@
-﻿using RecordShop.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using RecordShop.Data;
 using RecordShop.Models;
+using static RecordShop.Statics.StaticComponents;
 
 namespace RecordShop.Views
 {
@@ -74,25 +76,37 @@ namespace RecordShop.Views
 			vinyl.BandId = this.CbChooseBand.SelectedIndex + 1;
 			vinyl.PublisherId = this.CbChoosePublisher.SelectedIndex + 1;
 			vinyl.DateOfPublishing = this.DateOfPublishing.Value;
-			vinyl.Created = DateTime.Now;
 			vinyl.Updated = DateTime.Now;
 			vinyl.Status = 1;
 
 			if (this.BtnModify.Text.Equals("Create"))
 			{
+				vinyl.Created = DateTime.Now;
 				context.Vinyls.Add(vinyl);
 				context.SaveChanges();
 			}
 			else if (this.BtnModify.Text.Equals("Update"))
 			{
+				var existingVinyl = context.Vinyls.Where(v => v.VinylId == vinyl.VinylId).FirstOrDefault();
+				if (existingVinyl != null)
+				{
+					var created = existingVinyl.Created;
+					context.Entry(existingVinyl).State = EntityState.Detached;
+					existingVinyl = vinyl;
+					existingVinyl.Created = created;
 
+					context.Vinyls.Update(existingVinyl);
+					context.SaveChanges();
+				}
+				
 			}
 			ClearFields();
-
 		}
 
 		private void ClearFields()
 		{
+			vinylId = context.Vinyls.OrderByDescending(v => v.VinylId).FirstOrDefault()!.VinylId + 1;
+			this.VinylId.Text = vinylId.ToString();
 			this.VinylName.Text = string.Empty;
 			this.CbChooseBand.SelectedIndex = 0;
 			this.CbChoosePublisher.SelectedIndex = 0;
@@ -100,6 +114,8 @@ namespace RecordShop.Views
 			this.DateOfPublishing.Value = DateTime.Now;
 			this.PrimeCost.Value = 0;
 			this.SalePrice.Value = 0;
+			this.BtnModify.Text = "Create";
+			//SearchField.SelectAll();
 		}
 
 		private void BtnReset_Click(object sender, EventArgs e) => ClearFields();
