@@ -136,6 +136,7 @@
 			BtnDelete.Text = "Delete";
 			BtnDelete.TextAlign = ContentAlignment.MiddleRight;
 			BtnDelete.UseVisualStyleBackColor = true;
+			BtnDelete.Visible = false;
 			// 
 			// BtnModify
 			// 

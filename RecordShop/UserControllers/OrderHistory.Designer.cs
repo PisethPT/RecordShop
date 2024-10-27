@@ -83,7 +83,7 @@
 			OrderHistoryListTable.ReadOnly = true;
 			OrderHistoryListTable.RowHeadersVisible = false;
 			OrderHistoryListTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-			OrderHistoryListTable.Size = new Size(1548, 811);
+			OrderHistoryListTable.Size = new Size(1548, 801);
 			OrderHistoryListTable.TabIndex = 62;
 			// 
 			// pictureBox2

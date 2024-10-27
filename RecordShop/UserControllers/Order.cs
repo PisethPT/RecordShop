@@ -126,6 +126,7 @@ namespace RecordShop.UserControllers
 			{
 				InsertOrder();
 				ResetFields();
+				RecordShop.Statics.StaticComponents.orderNotificationCount.Text = (RecordShop.Statics.StaticComponents.NewOrderArchiveInt++).ToString();
 			}
 			else
 				MessageBox.Show("Please Add Vinyl for Order.", "Order Warning");

@@ -256,8 +256,11 @@
 			// orderNotificationCount
 			// 
 			orderNotificationCount.BackColor = SystemColors.Window;
-			orderNotificationCount.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			orderNotificationCount.Location = new Point(234, 11);
+			orderNotificationCount.FlatAppearance.BorderColor = SystemColors.ActiveCaptionText;
+			orderNotificationCount.FlatAppearance.MouseDownBackColor = SystemColors.Window;
+			orderNotificationCount.FlatAppearance.MouseOverBackColor = SystemColors.Window;
+			orderNotificationCount.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			orderNotificationCount.Location = new Point(235, 11);
 			orderNotificationCount.Name = "orderNotificationCount";
 			orderNotificationCount.Size = new Size(39, 35);
 			orderNotificationCount.TabIndex = 6;
@@ -278,9 +281,6 @@
 			BtnOrderHistoryOption.Text = "Orders Archive";
 			BtnOrderHistoryOption.UseVisualStyleBackColor = true;
 			BtnOrderHistoryOption.Click += BtnOrderHistoryOption_Click;
-			BtnOrderHistoryOption.MouseClick += BtnOrderHistoryOption_MouseClick;
-			BtnOrderHistoryOption.MouseLeave += BtnOrderHistoryOption_MouseLeave;
-			BtnOrderHistoryOption.MouseHover += BtnOrderHistoryOption_MouseHover;
 			// 
 			// panel7
 			// 

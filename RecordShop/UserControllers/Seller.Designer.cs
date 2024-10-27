@@ -48,11 +48,11 @@
 			RichAddress = new RichTextBox();
 			label6 = new Label();
 			BtnModify = new Button();
-			BtnDelete = new Button();
 			SellersListTable = new DataGridView();
 			SearchField = new TextBox();
 			SellerslRows = new Label();
 			BtnCancel = new Button();
+			BtnDelete = new Button();
 			((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
 			panel1.SuspendLayout();
@@ -247,20 +247,6 @@
 			BtnModify.UseVisualStyleBackColor = true;
 			BtnModify.Click += BtnModify_Click;
 			// 
-			// BtnDelete
-			// 
-			BtnDelete.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			BtnDelete.Image = Properties.Resources.icons8_remove_22;
-			BtnDelete.ImageAlign = ContentAlignment.MiddleLeft;
-			BtnDelete.Location = new Point(1332, 491);
-			BtnDelete.Name = "BtnDelete";
-			BtnDelete.Size = new Size(94, 32);
-			BtnDelete.TabIndex = 39;
-			BtnDelete.Text = "Delete";
-			BtnDelete.TextAlign = ContentAlignment.MiddleRight;
-			BtnDelete.UseVisualStyleBackColor = true;
-			BtnDelete.Click += BtnDelete_Click;
-			// 
 			// SellersListTable
 			// 
 			SellersListTable.AllowUserToAddRows = false;
@@ -323,6 +309,21 @@
 			BtnCancel.UseVisualStyleBackColor = true;
 			BtnCancel.Click += BtnCancel_Click;
 			// 
+			// BtnDelete
+			// 
+			BtnDelete.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			BtnDelete.Image = Properties.Resources.icons8_remove_22;
+			BtnDelete.ImageAlign = ContentAlignment.MiddleLeft;
+			BtnDelete.Location = new Point(1332, 491);
+			BtnDelete.Name = "BtnDelete";
+			BtnDelete.Size = new Size(94, 32);
+			BtnDelete.TabIndex = 39;
+			BtnDelete.Text = "Delete";
+			BtnDelete.TextAlign = ContentAlignment.MiddleRight;
+			BtnDelete.UseVisualStyleBackColor = true;
+			BtnDelete.Visible = false;
+			BtnDelete.Click += BtnDelete_Click;
+			// 
 			// Seller
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -346,7 +347,6 @@
 			Controls.Add(button7);
 			Name = "Seller";
 			Size = new Size(1600, 970);
-			Load += Seller_Load;
 			((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
 			panel1.ResumeLayout(false);
@@ -383,10 +383,10 @@
 		private Label label6;
 		private RichTextBox RichAddress;
 		private Button BtnModify;
-		private Button BtnDelete;
 		private DataGridView SellersListTable;
 		private TextBox SearchField;
 		private Label SellerslRows;
 		private Button BtnCancel;
+		private Button BtnDelete;
 	}
 }

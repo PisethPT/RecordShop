@@ -60,7 +60,8 @@ namespace RecordShop.UserControllers
 			VinylDiscountTable = new DataGridView();
 			AllVinylRows = new Label();
 			DiscountVinylRows = new Label();
-			BtnDelete = new Button();
+			BtnReturn = new Button();
+			label8 = new Label();
 			((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -180,9 +181,9 @@ namespace RecordShop.UserControllers
 			label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			label3.Location = new Point(1214, 347);
 			label3.Name = "label3";
-			label3.Size = new Size(139, 21);
+			label3.Size = new Size(213, 21);
 			label3.TabIndex = 16;
-			label3.Text = "All Vinyls Discount";
+			label3.Text = "All Vinyls Discount This Week";
 			// 
 			// button3
 			// 
@@ -352,13 +353,13 @@ namespace RecordShop.UserControllers
 			dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
 			VinylDiscountTable.DefaultCellStyle = dataGridViewCellStyle2;
 			VinylDiscountTable.GridColor = SystemColors.Window;
-			VinylDiscountTable.Location = new Point(1176, 388);
+			VinylDiscountTable.Location = new Point(1176, 399);
 			VinylDiscountTable.MultiSelect = false;
 			VinylDiscountTable.Name = "VinylDiscountTable";
 			VinylDiscountTable.ReadOnly = true;
 			VinylDiscountTable.RowHeadersVisible = false;
 			VinylDiscountTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-			VinylDiscountTable.Size = new Size(400, 529);
+			VinylDiscountTable.Size = new Size(400, 518);
 			VinylDiscountTable.TabIndex = 23;
 			// 
 			// AllVinylRows
@@ -381,26 +382,39 @@ namespace RecordShop.UserControllers
 			DiscountVinylRows.TabIndex = 2;
 			DiscountVinylRows.Text = "Rows: 0.0";
 			// 
-			// BtnDelete
+			// BtnReturn
 			// 
-			BtnDelete.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			BtnDelete.Image = (Image)resources.GetObject("BtnDelete.Image");
-			BtnDelete.ImageAlign = ContentAlignment.MiddleLeft;
-			BtnDelete.Location = new Point(1286, 262);
-			BtnDelete.Name = "BtnDelete";
-			BtnDelete.Size = new Size(91, 32);
-			BtnDelete.TabIndex = 24;
-			BtnDelete.Text = "Remove";
-			BtnDelete.TextAlign = ContentAlignment.MiddleRight;
-			BtnDelete.UseVisualStyleBackColor = true;
-			BtnDelete.Visible = false;
+			BtnReturn.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			BtnReturn.Image = (Image)resources.GetObject("BtnReturn.Image");
+			BtnReturn.ImageAlign = ContentAlignment.MiddleLeft;
+			BtnReturn.Location = new Point(1286, 262);
+			BtnReturn.Name = "BtnReturn";
+			BtnReturn.Size = new Size(91, 32);
+			BtnReturn.TabIndex = 24;
+			BtnReturn.Text = "Return";
+			BtnReturn.TextAlign = ContentAlignment.MiddleRight;
+			BtnReturn.UseVisualStyleBackColor = true;
+			BtnReturn.Visible = false;
+			BtnReturn.Click += BtnReturn_Click;
+			// 
+			// label8
+			// 
+			label8.AutoSize = true;
+			label8.Font = new Font("Segoe UI", 9.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
+			label8.ForeColor = SystemColors.ScrollBar;
+			label8.Location = new Point(1334, 377);
+			label8.Name = "label8";
+			label8.Size = new Size(231, 17);
+			label8.TabIndex = 2;
+			label8.Text = "Double click on cell for return or update";
 			// 
 			// Vinyls
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = SystemColors.Window;
-			Controls.Add(BtnDelete);
+			Controls.Add(BtnReturn);
+			Controls.Add(label8);
 			Controls.Add(DiscountVinylRows);
 			Controls.Add(AllVinylRows);
 			Controls.Add(VinylDiscountTable);
@@ -469,6 +483,7 @@ namespace RecordShop.UserControllers
 		private DataGridView VinylDiscountTable;
 		private Label AllVinylRows;
 		private Label DiscountVinylRows;
-		private Button BtnDelete;
+		private Button BtnReturn;
+		private Label label8;
 	}
 }

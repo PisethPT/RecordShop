@@ -1,4 +1,5 @@
-﻿using RecordShop.UserControllers;
+﻿using RecordShop.Statics;
+using RecordShop.UserControllers;
 
 namespace RecordShop.Views
 {
@@ -21,6 +22,11 @@ namespace RecordShop.Views
 		public Shop()
 		{
 			InitializeComponent();
+			if(this is not null)
+			{
+				StaticComponents.orderNotificationCount = this.orderNotificationCount;
+			}
+
 			Options = new Options();
 			this.BtnDashboardOption.BackColor = SystemColors.ControlLight;
 			Options.ShowUserControl<Dashboard>(this.FlowContainPanel, new Dashboard());
@@ -88,9 +94,10 @@ namespace RecordShop.Views
 				case SystemOption.OrderHistory:
 					{
 						this.BtnOrderHistoryOption.BackColor = SystemColors.ControlLight;
-						this.orderNotificationCount.BackColor = SystemColors.ControlLight;
 						Options.ShowUserControl<OrderHistory>(this.FlowContainPanel, new OrderHistory());
 						this.BtnOrderHistoryOption.Enabled = false;
+						StaticComponents.orderNotificationCount.Text = "0";
+						StaticComponents.NewOrderArchiveInt = 1;
 						break;
 					}
 				case SystemOption.Setting:
@@ -117,29 +124,6 @@ namespace RecordShop.Views
 
 		private void BtnOrderHistoryOption_Click(object sender, EventArgs e) => SelectSystemOptions(SystemOption.OrderHistory);
 
-		private void BtnOrderHistoryOption_MouseLeave(object sender, EventArgs e)
-		{
-			if(this.BtnOrderHistoryOption.Enabled == true)
-			{
-				this.orderNotificationCount.BackColor = SystemColors.Window;
-				this.orderNotificationCount.FlatStyle = FlatStyle.Standard;
-				this.orderNotificationCount.FlatAppearance.BorderSize = 1;
-			}
-		}
-
-		private void BtnOrderHistoryOption_MouseClick(object sender, MouseEventArgs e)
-		{
-			this.orderNotificationCount.BackColor = SystemColors.ControlLight;
-			this.orderNotificationCount.FlatStyle = FlatStyle.Flat;
-			this.orderNotificationCount.FlatAppearance.BorderSize = 0;
-			this.orderNotificationCount.Enabled = false;
-		}
-		private void BtnOrderHistoryOption_MouseHover(object sender, EventArgs e)
-		{
-			this.orderNotificationCount.BackColor = SystemColors.ControlLight;
-			this.orderNotificationCount.FlatStyle = FlatStyle.Flat;
-			this.orderNotificationCount.FlatAppearance.BorderSize = 0;
-		}
 	}
 
 

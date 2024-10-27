@@ -61,6 +61,26 @@
 			pictureBox4 = new PictureBox();
 			Analyticts = new Label();
 			button10 = new Button();
+			pictureBox6 = new PictureBox();
+			label4 = new Label();
+			NewReleaseToday = new Label();
+			TotalVinyl = new Label();
+			label5 = new Label();
+			TotalSoldPrice = new Label();
+			pictureBox7 = new PictureBox();
+			label11 = new Label();
+			TotalSoldVinyl = new Label();
+			pictureBox8 = new PictureBox();
+			label13 = new Label();
+			label14 = new Label();
+			TotalPaidPrice = new Label();
+			pictureBox9 = new PictureBox();
+			label16 = new Label();
+			TotalRemainPrice = new Label();
+			label18 = new Label();
+			pictureBox10 = new PictureBox();
+			label19 = new Label();
+			label10 = new Label();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -70,6 +90,11 @@
 			((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
 			((System.ComponentModel.ISupportInitialize)PopularGenresTable).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
 			SuspendLayout();
 			// 
 			// button1
@@ -400,11 +425,231 @@
 			button10.TabIndex = 73;
 			button10.UseVisualStyleBackColor = false;
 			// 
+			// pictureBox6
+			// 
+			pictureBox6.Image = Properties.Resources.icons8_music_library_241;
+			pictureBox6.Location = new Point(28, 27);
+			pictureBox6.Name = "pictureBox6";
+			pictureBox6.Size = new Size(35, 34);
+			pictureBox6.SizeMode = PictureBoxSizeMode.CenterImage;
+			pictureBox6.TabIndex = 77;
+			pictureBox6.TabStop = false;
+			// 
+			// label4
+			// 
+			label4.AutoSize = true;
+			label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label4.Location = new Point(98, 27);
+			label4.Name = "label4";
+			label4.Size = new Size(88, 21);
+			label4.TabIndex = 76;
+			label4.Text = "Total Vinyls";
+			// 
+			// NewReleaseToday
+			// 
+			NewReleaseToday.AutoSize = true;
+			NewReleaseToday.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			NewReleaseToday.Location = new Point(98, 91);
+			NewReleaseToday.Name = "NewReleaseToday";
+			NewReleaseToday.Size = new Size(151, 17);
+			NewReleaseToday.TabIndex = 79;
+			NewReleaseToday.Text = "23 new release on today";
+			// 
+			// TotalVinyl
+			// 
+			TotalVinyl.AutoSize = true;
+			TotalVinyl.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			TotalVinyl.Location = new Point(98, 49);
+			TotalVinyl.Name = "TotalVinyl";
+			TotalVinyl.Size = new Size(84, 32);
+			TotalVinyl.TabIndex = 76;
+			TotalVinyl.Text = "1208.0";
+			// 
+			// label5
+			// 
+			label5.AutoSize = true;
+			label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label5.Location = new Point(415, 27);
+			label5.Name = "label5";
+			label5.Size = new Size(115, 21);
+			label5.TabIndex = 76;
+			label5.Text = "Total Sold Price";
+			// 
+			// TotalSoldPrice
+			// 
+			TotalSoldPrice.AutoSize = true;
+			TotalSoldPrice.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			TotalSoldPrice.Location = new Point(415, 49);
+			TotalSoldPrice.Name = "TotalSoldPrice";
+			TotalSoldPrice.Size = new Size(141, 32);
+			TotalSoldPrice.TabIndex = 76;
+			TotalSoldPrice.Text = "$308,120.99";
+			// 
+			// pictureBox7
+			// 
+			pictureBox7.Image = Properties.Resources.icons8_usd_order_reciept_invoice_bill_accounting_purchase_24;
+			pictureBox7.Location = new Point(345, 27);
+			pictureBox7.Name = "pictureBox7";
+			pictureBox7.Size = new Size(35, 34);
+			pictureBox7.SizeMode = PictureBoxSizeMode.CenterImage;
+			pictureBox7.TabIndex = 77;
+			pictureBox7.TabStop = false;
+			// 
+			// label11
+			// 
+			label11.AutoSize = true;
+			label11.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label11.Location = new Point(735, 27);
+			label11.Name = "label11";
+			label11.Size = new Size(123, 21);
+			label11.TabIndex = 76;
+			label11.Text = "Total Sold Vinyls";
+			// 
+			// TotalSoldVinyl
+			// 
+			TotalSoldVinyl.AutoSize = true;
+			TotalSoldVinyl.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			TotalSoldVinyl.Location = new Point(735, 49);
+			TotalSoldVinyl.Name = "TotalSoldVinyl";
+			TotalSoldVinyl.Size = new Size(71, 32);
+			TotalSoldVinyl.TabIndex = 76;
+			TotalSoldVinyl.Text = "128.0";
+			// 
+			// pictureBox8
+			// 
+			pictureBox8.Image = Properties.Resources.icons8_report_24;
+			pictureBox8.Location = new Point(665, 27);
+			pictureBox8.Name = "pictureBox8";
+			pictureBox8.Size = new Size(35, 34);
+			pictureBox8.SizeMode = PictureBoxSizeMode.CenterImage;
+			pictureBox8.TabIndex = 77;
+			pictureBox8.TabStop = false;
+			// 
+			// label13
+			// 
+			label13.AutoSize = true;
+			label13.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label13.Location = new Point(735, 91);
+			label13.Name = "label13";
+			label13.Size = new Size(125, 17);
+			label13.TabIndex = 79;
+			label13.Text = "56% from yesterday";
+			// 
+			// label14
+			// 
+			label14.AutoSize = true;
+			label14.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label14.Location = new Point(1054, 27);
+			label14.Name = "label14";
+			label14.Size = new Size(113, 21);
+			label14.TabIndex = 76;
+			label14.Text = "Total Paid Price";
+			// 
+			// TotalPaidPrice
+			// 
+			TotalPaidPrice.AutoSize = true;
+			TotalPaidPrice.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			TotalPaidPrice.Location = new Point(1054, 49);
+			TotalPaidPrice.Name = "TotalPaidPrice";
+			TotalPaidPrice.Size = new Size(128, 32);
+			TotalPaidPrice.TabIndex = 76;
+			TotalPaidPrice.Text = "$390,55.09";
+			// 
+			// pictureBox9
+			// 
+			pictureBox9.Image = Properties.Resources.icons8_paid_bill_stamp_24;
+			pictureBox9.Location = new Point(984, 27);
+			pictureBox9.Name = "pictureBox9";
+			pictureBox9.Size = new Size(35, 34);
+			pictureBox9.SizeMode = PictureBoxSizeMode.CenterImage;
+			pictureBox9.TabIndex = 77;
+			pictureBox9.TabStop = false;
+			// 
+			// label16
+			// 
+			label16.AutoSize = true;
+			label16.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label16.Location = new Point(1054, 91);
+			label16.Name = "label16";
+			label16.Size = new Size(125, 17);
+			label16.TabIndex = 79;
+			label16.Text = "54% from yesterday";
+			// 
+			// TotalRemainPrice
+			// 
+			TotalRemainPrice.AutoSize = true;
+			TotalRemainPrice.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			TotalRemainPrice.Location = new Point(1372, 27);
+			TotalRemainPrice.Name = "TotalRemainPrice";
+			TotalRemainPrice.Size = new Size(137, 21);
+			TotalRemainPrice.TabIndex = 76;
+			TotalRemainPrice.Text = "Total Remain Price";
+			// 
+			// label18
+			// 
+			label18.AutoSize = true;
+			label18.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label18.Location = new Point(1372, 49);
+			label18.Name = "label18";
+			label18.Size = new Size(97, 32);
+			label18.TabIndex = 76;
+			label18.Text = "$128.89";
+			// 
+			// pictureBox10
+			// 
+			pictureBox10.Image = Properties.Resources.icons8_sale_241;
+			pictureBox10.Location = new Point(1302, 27);
+			pictureBox10.Name = "pictureBox10";
+			pictureBox10.Size = new Size(35, 34);
+			pictureBox10.SizeMode = PictureBoxSizeMode.CenterImage;
+			pictureBox10.TabIndex = 77;
+			pictureBox10.TabStop = false;
+			// 
+			// label19
+			// 
+			label19.AutoSize = true;
+			label19.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label19.Location = new Point(1372, 91);
+			label19.Name = "label19";
+			label19.Size = new Size(127, 17);
+			label19.TabIndex = 79;
+			label19.Text = "14% from tomorrow";
+			// 
+			// label10
+			// 
+			label10.AutoSize = true;
+			label10.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label10.Location = new Point(415, 91);
+			label10.Name = "label10";
+			label10.Size = new Size(125, 17);
+			label10.TabIndex = 79;
+			label10.Text = "85% from yesterday";
+			// 
 			// Dashboard
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = SystemColors.Window;
+			Controls.Add(label19);
+			Controls.Add(label16);
+			Controls.Add(label13);
+			Controls.Add(label10);
+			Controls.Add(NewReleaseToday);
+			Controls.Add(pictureBox10);
+			Controls.Add(pictureBox9);
+			Controls.Add(pictureBox8);
+			Controls.Add(pictureBox7);
+			Controls.Add(pictureBox6);
+			Controls.Add(label18);
+			Controls.Add(TotalPaidPrice);
+			Controls.Add(TotalSoldVinyl);
+			Controls.Add(TotalSoldPrice);
+			Controls.Add(TotalVinyl);
+			Controls.Add(TotalRemainPrice);
+			Controls.Add(label14);
+			Controls.Add(label11);
+			Controls.Add(label5);
+			Controls.Add(label4);
 			Controls.Add(pictureBox4);
 			Controls.Add(Analyticts);
 			Controls.Add(button10);
@@ -444,6 +689,11 @@
 			((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
 			((System.ComponentModel.ISupportInitialize)PopularGenresTable).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+			((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
+			((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
+			((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
+			((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
+			((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -478,5 +728,25 @@
 		private PictureBox pictureBox4;
 		private Label Analyticts;
 		private Button button10;
+		private PictureBox pictureBox6;
+		private Label label4;
+		private Label NewReleaseToday;
+		private Label TotalVinyl;
+		private Label label5;
+		private Label TotalSoldPrice;
+		private PictureBox pictureBox7;
+		private Label label11;
+		private Label TotalSoldVinyl;
+		private PictureBox pictureBox8;
+		private Label label13;
+		private Label label14;
+		private Label TotalPaidPrice;
+		private PictureBox pictureBox9;
+		private Label label16;
+		private Label TotalRemainPrice;
+		private Label label18;
+		private PictureBox pictureBox10;
+		private Label label19;
+		private Label label10;
 	}
 }

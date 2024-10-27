@@ -1,4 +1,5 @@
-﻿using RecordShop.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using RecordShop.Data;
 using System.Data;
 
 namespace RecordShop.UserControllers
@@ -20,7 +21,7 @@ namespace RecordShop.UserControllers
 				buyerId = context.Buyers.OrderByDescending(b => b.BuyerId).FirstOrDefault()!.BuyerId + 1;
 			else
 				buyerId = 1;
-
+			this.BuyerId.Text = buyerId.ToString();
 			DataTable table = new DataTable();
 			table.Columns.Add("No.");
 			table.Columns.Add("Buyer's Name");
@@ -68,7 +69,7 @@ namespace RecordShop.UserControllers
 		private void BtnModify_Click(object sender, EventArgs e)
 		{
 			var buyer = new Models.Buyer();
-			buyer.BuyerId = buyerId;
+			
 			if (string.IsNullOrEmpty(this.BuyerId.Text) || string.IsNullOrWhiteSpace(this.BuyerName.Text))
 			{
 				return;
@@ -95,11 +96,30 @@ namespace RecordShop.UserControllers
 			{
 				buyer.Address = this.RichAddress.Text;
 			}
-
-			buyer.Created = DateTime.Now;
+			buyerId = int.Parse(this.BuyerId.Text);
+			buyer.BuyerId = buyerId;
 			buyer.Updated = DateTime.Now;
-			context.Buyers.Add(buyer);
-			context.SaveChanges();
+
+			if (this.BtnModify.Text == "Create")
+			{
+				buyer.Created = DateTime.Now;
+				context.Buyers.Add(buyer);
+				context.SaveChanges();
+			}
+			else if (this.BtnModify.Text == "Update")
+			{
+				var existingBuyer = context.Buyers.FirstOrDefault(b => b.BuyerId == buyerId);
+				if (existingBuyer != null)
+				{
+					var create = existingBuyer.Created;
+					context.Entry(existingBuyer).State = EntityState.Detached;
+					existingBuyer = buyer;
+					existingBuyer.Created = create;
+					context.Buyers.Update(existingBuyer);
+					context.SaveChanges();
+				}
+			}
+
 			CancelFields();
 			GetAllBuyers(context.Buyers.ToList());
 		}

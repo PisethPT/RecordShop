@@ -26,8 +26,9 @@ namespace RecordShop.UserControllers
 			GetAllVinylRecords(context.Vinyls.ToList());
 			GetAllVinylDiscount();
 			this.BtnSubmit.Enabled = false;
-			this.BtnDelete.Visible = false;
+			this.BtnReturn.Visible = false;
 			this.BtnSubmit.Text = "Create";
+			CheckExpireDiscountDate();
 		}
 
 		private void GetAllVinylDiscount()
@@ -37,15 +38,17 @@ namespace RecordShop.UserControllers
 				vinylDiscountId = context.VinylForDiscounts.OrderByDescending(x => x.Id).FirstOrDefault()!.Id + 1;
 			else vinylDiscountId = 1;
 
-			var vinylDiscount = context.VinylForDiscounts.ToList();
+			var vinylDiscount = context.VinylForDiscounts.Where(d => d.DiscountDate!.Date.Equals(DateTime.Today) || d.DiscountDate!.Date > DateTime.Today)
+														 .OrderByDescending(d => d.DiscountDate).ToList();
+			vinylDiscount.Reverse();
 			DataTable table = new DataTable();
 			table.Columns.Add("No.");
 			table.Columns.Add("Vinyl Name");
 			table.Columns.Add("Discount Date");
 			table.Columns.Add("Sale Price");
 
-			foreach (var vinyl in vinylDiscount) 
-			{ 
+			foreach (var vinyl in vinylDiscount)
+			{
 				var row = table.NewRow();
 				row[0] = index++;
 				row[1] = context.Vinyls.Where(v => v.VinylId == vinyl.VinylId).FirstOrDefault()!.VinylName;
@@ -56,6 +59,7 @@ namespace RecordShop.UserControllers
 			}
 
 			this.VinylDiscountTable.DataSource = table;
+			this.VinylDiscountTable.CellClick += VinylDiscountTable_CellClick;
 
 			this.VinylDiscountTable.Columns["No."].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
 			this.VinylDiscountTable.Columns["No."].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -63,6 +67,8 @@ namespace RecordShop.UserControllers
 			this.VinylDiscountTable.Columns["Discount Date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
 			this.DiscountVinylRows.Text = $"Rows: {table.Rows.Count.ToString("#,###.0")}";
 		}
+
+		private void VinylDiscountTable_CellClick(object? sender, DataGridViewCellEventArgs e) => CancelAndResetField();
 
 		private void GetAllVinylRecords(List<Vinyl> vinylRecords)
 		{
@@ -131,7 +137,7 @@ namespace RecordShop.UserControllers
 				this.VinylName.Text = this.VinylDiscountTable.Rows[e.RowIndex].Cells[1].Value.ToString();
 				this.SellingPrice.Value = decimal.Parse(this.VinylDiscountTable.Rows[e.RowIndex].Cells[3].Value.ToString()!.Trim('$'));
 				this.DiscountDate.Text = this.VinylDiscountTable.Rows[e.RowIndex].Cells[2].Value.ToString();
-				this.BtnDelete.Visible = true;
+				this.BtnReturn.Visible = true;
 				this.BtnSubmit.Enabled = true;
 				this.BtnSubmit.Text = "Update";
 			}
@@ -163,11 +169,11 @@ namespace RecordShop.UserControllers
 				this.BtnSubmit.Enabled = true;
 			}
 
-			if (this.AllVinylRecordsTable.Columns[e.ColumnIndex].HeaderText.Equals("Edit") && e.RowIndex >= 0) 
+			if (this.AllVinylRecordsTable.Columns[e.ColumnIndex].HeaderText.Equals("Edit") && e.RowIndex >= 0)
 			{
 				EditVinyl(e.RowIndex);
 			}
-			else if(this.AllVinylRecordsTable.Columns[e.ColumnIndex].HeaderText.Equals("Delete") && e.RowIndex >= 0)
+			else if (this.AllVinylRecordsTable.Columns[e.ColumnIndex].HeaderText.Equals("Delete") && e.RowIndex >= 0)
 			{
 				DeleteVinyl(e.RowIndex);
 			}
@@ -221,7 +227,33 @@ namespace RecordShop.UserControllers
 			}
 		}
 
-		private void BtnSubmit_Click(object sender, EventArgs e) => AddDiscountVinyl();
+		private void BtnSubmit_Click(object sender, EventArgs e)
+		{
+			if (this.BtnSubmit.Text == "Create")
+				AddDiscountVinyl();
+			else if (this.BtnSubmit.Text == "Update")
+				UpdateDiscountVinyl();
+		}
+
+		private void UpdateDiscountVinyl()
+		{
+			var vinylId = context.Vinyls.FirstOrDefault(v => v.VinylName.Equals(this.VinylName.Text))!.VinylId;
+			if (vinylId > 0)
+			{
+				var vinylDiscount = context.VinylForDiscounts.FirstOrDefault(d => d.VinylId == vinylId);
+				if (vinylDiscount != null)
+				{
+					vinylDiscount.DiscountDate = this.DiscountDate.Value;
+					vinylDiscount.SellingPrice = (double)this.SellingPrice.Value;
+					vinylDiscount.Updated = DateTime.Now;
+					context.Entry(vinylDiscount).State = EntityState.Detached;
+					context.VinylForDiscounts.Update(vinylDiscount);
+					context.SaveChanges();
+					CancelAndResetField();
+					GetAllVinylDiscount();
+				}
+			}
+		}
 
 		private void BtnCancel_Click(object sender, EventArgs e) => CancelAndResetField();
 
@@ -233,7 +265,7 @@ namespace RecordShop.UserControllers
 			this.AllVinylRecordsTable.ClearSelection();
 			this.BtnSubmit.Enabled = false;
 			this.BtnSubmit.Text = "Create";
-			this.BtnDelete.Visible = false;
+			this.BtnReturn.Visible = false;
 		}
 
 		private void AddDiscountVinyl()
@@ -248,8 +280,16 @@ namespace RecordShop.UserControllers
 			{
 				vinylForDiscount.VinylId = context.Vinyls.Where(v => v.VinylName.Equals(this.VinylName.Text)).FirstOrDefault()!.VinylId;
 			}
-			vinylForDiscount.DiscountDate = DateTime.Now;
-			vinylForDiscount.SellingPrice = (double)this.SellingPrice.Value;
+
+			if (this.DiscountDate.Value < DateTime.Now)
+				return;
+			else
+			vinylForDiscount.DiscountDate = this.DiscountDate.Value;
+
+			//vinylForDiscount.SellingPrice = (double)this.SellingPrice.Value;
+			var sellingPriceDiscount = (double)context.Vinyls.Where(v => v.VinylName.Equals(this.VinylName.Text)).FirstOrDefault()!.SalePrice;
+			sellingPriceDiscount -= (sellingPriceDiscount * 10) / 100;
+			vinylForDiscount.SellingPrice = sellingPriceDiscount;
 			vinylForDiscount.Created = DateTime.Now;
 			vinylForDiscount.Updated = DateTime.Now;
 
@@ -258,6 +298,7 @@ namespace RecordShop.UserControllers
 			{
 				context.VinylForDiscounts.Add(vinylForDiscount);
 				context.SaveChanges();
+				UpdateVinylStatusWhenAddOrReturnDiscount(vinylForDiscount.VinylId.Value, 0);
 
 				CancelAndResetField();
 				GetAllVinylDiscount();
@@ -267,6 +308,18 @@ namespace RecordShop.UserControllers
 				MessageBox.Show("Vinyl Already Discount.", "Duplicate", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				CancelAndResetField();
 				return;
+			}
+		}
+
+		public void UpdateVinylStatusWhenAddOrReturnDiscount(int vinylId, byte statusCode)
+		{
+			var vinyl = context.Vinyls.FirstOrDefault(v => v.VinylId == vinylId);
+			if (vinyl != null)
+			{
+				vinyl.Status = statusCode;
+				context.Entry(vinyl).State = EntityState.Detached;
+				context.Vinyls.Update(vinyl);
+				context.SaveChanges();
 			}
 		}
 
@@ -297,15 +350,15 @@ namespace RecordShop.UserControllers
 				}
 			}
 		}
-	
+
 		private void DeleteVinyl(int rowIndex)
 		{
 			var vinylIndex = int.Parse(this.AllVinylRecordsTable.Rows[rowIndex].Cells[2].Value.ToString()!);
 			var vinyl = context.Vinyls.FirstOrDefault(v => v.VinylId.Equals(vinylIndex));
 			if (vinyl is not null)
 			{
-				var response = MessageBox.Show($"Delete this '{this.AllVinylRecordsTable.Rows[rowIndex].Cells[3].Value.ToString()}' ?","Delete Vinyl",MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-				if (response == DialogResult.OK) 
+				var response = MessageBox.Show($"Delete this '{this.AllVinylRecordsTable.Rows[rowIndex].Cells[3].Value.ToString()}' ?", "Delete Vinyl", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+				if (response == DialogResult.OK)
 				{
 					try
 					{
@@ -331,5 +384,35 @@ namespace RecordShop.UserControllers
 				}
 			}
 		}
+
+		private void VinylDiscountReturnToNormalPrice(int vinylId)
+		{
+			var existingVinylDiscount = context.VinylForDiscounts.FirstOrDefault(d => d.VinylId == vinylId);
+			if (existingVinylDiscount is not null)
+			{
+				context.VinylForDiscounts.Remove(existingVinylDiscount);
+				context.SaveChanges();
+				UpdateVinylStatusWhenAddOrReturnDiscount(vinylId, 1);
+			}
+		}
+
+		private void CheckExpireDiscountDate()
+		{
+			foreach (var vinyl in context.VinylForDiscounts.Where(d => d.DiscountDate!.Date < DateTime.Today).ToList())
+			{
+				VinylDiscountReturnToNormalPrice(vinyl.VinylId!.Value);
+			}
+		}
+
+		private void BtnReturn_Click(object sender, EventArgs e)
+		{
+			var vinylId = context.Vinyls.FirstOrDefault(v => v.VinylName.Equals(this.VinylName.Text))!.VinylId;
+			if(vinylId > 0)
+				VinylDiscountReturnToNormalPrice(vinylId);
+
+			CancelAndResetField();
+			GetAllVinylDiscount();
+		}
+
 	}
 }

@@ -1,4 +1,5 @@
-﻿using RecordShop.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using RecordShop.Data;
 using System.Data;
 
 namespace RecordShop.UserControllers
@@ -14,7 +15,7 @@ namespace RecordShop.UserControllers
 
 			GetAllSellers(context.Sellers.ToList());
 
-			this.SellerId.Text = sellerId.ToString();
+			
 			this.BtnDelete.Enabled = false;
 			this.BtnModify.Text = "Create";
 		}
@@ -25,6 +26,7 @@ namespace RecordShop.UserControllers
 				sellerId = context.Sellers.OrderByDescending(s => s.SellerId).FirstOrDefault()!.SellerId + 1;
 			else
 				sellerId = 1;
+			this.SellerId.Text = sellerId.ToString();
 
 			DataTable table = new DataTable();
 			table.Columns.Add("No.");
@@ -73,7 +75,6 @@ namespace RecordShop.UserControllers
 		private void BtnModify_Click(object sender, EventArgs e)
 		{
 			var seller = new Models.Seller();
-			seller.SellerId = sellerId;
 			if (string.IsNullOrEmpty(this.SellerName.Text) || string.IsNullOrWhiteSpace(this.SellerName.Text))
 			{
 				return;
@@ -100,11 +101,29 @@ namespace RecordShop.UserControllers
 			{
 				seller.Address = this.RichAddress.Text;
 			}
-
-			seller.Created = DateTime.Now;
+			sellerId = int.Parse(this.SellerId.Text);
+			seller.SellerId = sellerId;
 			seller.Updated = DateTime.Now;
-			context.Sellers.Add(seller);
-			context.SaveChanges();
+
+			if (this.BtnModify.Text == "Create")
+			{
+				seller.Created = DateTime.Now;
+				context.Sellers.Add(seller);
+				context.SaveChanges();
+			}else if(this.BtnModify.Text == "Update")
+			{
+				var existingSeller = context.Sellers.FirstOrDefault(s => s.SellerId == sellerId);
+				if (existingSeller != null)
+				{
+					var created = existingSeller.Created;
+					context.Entry(existingSeller).State = EntityState.Detached;
+					existingSeller = seller;
+					existingSeller.Created = created;
+					context.Sellers.Update(existingSeller);
+					context.SaveChanges();
+				}
+			}
+
 			CancelFields();
 			GetAllSellers(context.Sellers.ToList());
 		}
@@ -140,9 +159,5 @@ namespace RecordShop.UserControllers
 			}
 		}
 
-		private void Seller_Load(object sender, EventArgs e)
-		{
-
-		}
 	}
 }
