@@ -39,9 +39,9 @@ namespace RecordShop.UserControllers
 			GetVinyl(context.Vinyls.ToList());
 			GetBands();
 			GetAllBandDefault();
-			invoiceId = int.Parse((context.Sales.Count() + 1).ToString());
+			invoiceId = int.Parse((context.Sales.OrderByDescending(s => s.SaleId).FirstOrDefault()!.SaleId + 1).ToString());
 			this.InvoiceId.Text = invoiceId.ToString();
-			saleDetailId = int.Parse((context.SaleDetails.Count() + 1).ToString());
+			saleDetailId = int.Parse((context.SaleDetails.OrderByDescending(s => s.SaleDetailId).FirstOrDefault()!.SaleDetailId + 1).ToString());
 		}
 
 		private void GetVinyl(List<Vinyl> vinylRecords)
