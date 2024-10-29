@@ -69,9 +69,10 @@ namespace RecordShop.UserControllers
 		private void BtnModify_Click(object sender, EventArgs e)
 		{
 			var buyer = new Models.Buyer();
-			
+
 			if (string.IsNullOrEmpty(this.BuyerId.Text) || string.IsNullOrWhiteSpace(this.BuyerName.Text))
 			{
+				this.BuyerNameRequire.SetError(this.BuyerName, "Buyer's name require.");
 				return;
 			}
 			else
@@ -81,6 +82,7 @@ namespace RecordShop.UserControllers
 
 			if (string.IsNullOrEmpty(this.Phone.Text) || string.IsNullOrWhiteSpace(this.Phone.Text))
 			{
+				this.PhoneRequire.SetError(this.Phone, "Phone require.");
 				return;
 			}
 			else
@@ -90,6 +92,7 @@ namespace RecordShop.UserControllers
 
 			if (string.IsNullOrEmpty(this.RichAddress.Text) || string.IsNullOrWhiteSpace(this.RichAddress.Text))
 			{
+				this.AddressRequire.SetError(this.RichAddress, "Address require.");
 				return;
 			}
 			else
@@ -149,6 +152,12 @@ namespace RecordShop.UserControllers
 				GetAllBuyers(buyers);
 			}
 		}
+
+		private void BuyerName_TextChanged(object sender, EventArgs e) => this.BuyerNameRequire.SetError(this.BuyerName, string.Empty);
+
+		private void Phone_TextChanged(object sender, EventArgs e) => this.PhoneRequire.SetError(this.Phone, string.Empty);
+
+		private void RichAddress_TextChanged(object sender, EventArgs e) => this.AddressRequire.SetError(this.RichAddress, string.Empty);
 	}
 }
 

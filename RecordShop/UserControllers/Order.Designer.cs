@@ -86,6 +86,7 @@ namespace RecordShop.UserControllers
 			SearchField.PlaceholderText = "Search By Name";
 			SearchField.Size = new Size(476, 28);
 			SearchField.TabIndex = 24;
+			SearchField.TextChanged += SearchField_TextChanged;
 			// 
 			// pictureBox2
 			// 

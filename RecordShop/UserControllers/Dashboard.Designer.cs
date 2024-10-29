@@ -28,11 +28,14 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-			DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-			DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-			DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+			DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+			DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+			DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+			DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
+			DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+			DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
+			DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
 			button1 = new Button();
 			button2 = new Button();
 			button3 = new Button();
@@ -57,7 +60,7 @@
 			button9 = new Button();
 			pictureBox5 = new PictureBox();
 			label6 = new Label();
-			PopularGenresTable = new DataGridView();
+			TodayGenresTable = new DataGridView();
 			pictureBox4 = new PictureBox();
 			Analyticts = new Label();
 			button10 = new Button();
@@ -71,16 +74,24 @@
 			label11 = new Label();
 			TotalSoldVinyl = new Label();
 			pictureBox8 = new PictureBox();
-			label13 = new Label();
+			TotalAllVinyl = new Label();
 			label14 = new Label();
 			TotalPaidPrice = new Label();
 			pictureBox9 = new PictureBox();
-			label16 = new Label();
+			TotalAllPaidPrice = new Label();
+			tital = new Label();
 			TotalRemainPrice = new Label();
-			label18 = new Label();
 			pictureBox10 = new PictureBox();
-			label19 = new Label();
-			label10 = new Label();
+			TotalAllRemainPrice = new Label();
+			TotalAllSoldPrice = new Label();
+			tabControl = new TabControl();
+			tabToday = new TabPage();
+			tabWeek = new TabPage();
+			WeekGenresTable = new DataGridView();
+			tabMonth = new TabPage();
+			MonthGenresTable = new DataGridView();
+			tabYear = new TabPage();
+			YearGenresTable = new DataGridView();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -88,13 +99,21 @@
 			((System.ComponentModel.ISupportInitialize)PopularBandsTable).BeginInit();
 			((System.ComponentModel.ISupportInitialize)BestSellerTable).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
-			((System.ComponentModel.ISupportInitialize)PopularGenresTable).BeginInit();
+			((System.ComponentModel.ISupportInitialize)TodayGenresTable).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
+			tabControl.SuspendLayout();
+			tabToday.SuspendLayout();
+			tabWeek.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)WeekGenresTable).BeginInit();
+			tabMonth.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)MonthGenresTable).BeginInit();
+			tabYear.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)YearGenresTable).BeginInit();
 			SuspendLayout();
 			// 
 			// button1
@@ -230,14 +249,14 @@
 			NewVinylTable.BackgroundColor = SystemColors.Window;
 			NewVinylTable.BorderStyle = BorderStyle.None;
 			NewVinylTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle1.BackColor = SystemColors.Window;
-			dataGridViewCellStyle1.Font = new Font("Segoe UI", 10F);
-			dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
-			dataGridViewCellStyle1.SelectionBackColor = SystemColors.ControlLight;
-			dataGridViewCellStyle1.SelectionForeColor = Color.Black;
-			dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-			NewVinylTable.DefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle8.BackColor = SystemColors.Window;
+			dataGridViewCellStyle8.Font = new Font("Segoe UI", 10F);
+			dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
+			dataGridViewCellStyle8.SelectionBackColor = SystemColors.ControlLight;
+			dataGridViewCellStyle8.SelectionForeColor = Color.Black;
+			dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+			NewVinylTable.DefaultCellStyle = dataGridViewCellStyle8;
 			NewVinylTable.GridColor = SystemColors.Window;
 			NewVinylTable.Location = new Point(28, 198);
 			NewVinylTable.MultiSelect = false;
@@ -277,14 +296,14 @@
 			PopularBandsTable.BackgroundColor = SystemColors.Window;
 			PopularBandsTable.BorderStyle = BorderStyle.None;
 			PopularBandsTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle2.BackColor = SystemColors.Window;
-			dataGridViewCellStyle2.Font = new Font("Segoe UI", 10F);
-			dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-			dataGridViewCellStyle2.SelectionBackColor = SystemColors.ControlLight;
-			dataGridViewCellStyle2.SelectionForeColor = Color.Black;
-			dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-			PopularBandsTable.DefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle9.BackColor = SystemColors.Window;
+			dataGridViewCellStyle9.Font = new Font("Segoe UI", 10F);
+			dataGridViewCellStyle9.ForeColor = SystemColors.ControlText;
+			dataGridViewCellStyle9.SelectionBackColor = SystemColors.ControlLight;
+			dataGridViewCellStyle9.SelectionForeColor = Color.Black;
+			dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
+			PopularBandsTable.DefaultCellStyle = dataGridViewCellStyle9;
 			PopularBandsTable.GridColor = SystemColors.Window;
 			PopularBandsTable.Location = new Point(26, 519);
 			PopularBandsTable.MultiSelect = false;
@@ -314,14 +333,14 @@
 			BestSellerTable.BackgroundColor = SystemColors.Window;
 			BestSellerTable.BorderStyle = BorderStyle.None;
 			BestSellerTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle3.BackColor = SystemColors.Window;
-			dataGridViewCellStyle3.Font = new Font("Segoe UI", 10F);
-			dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-			dataGridViewCellStyle3.SelectionBackColor = SystemColors.ControlLight;
-			dataGridViewCellStyle3.SelectionForeColor = Color.Black;
-			dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-			BestSellerTable.DefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle10.BackColor = SystemColors.Window;
+			dataGridViewCellStyle10.Font = new Font("Segoe UI", 10F);
+			dataGridViewCellStyle10.ForeColor = SystemColors.ControlText;
+			dataGridViewCellStyle10.SelectionBackColor = SystemColors.ControlLight;
+			dataGridViewCellStyle10.SelectionForeColor = Color.Black;
+			dataGridViewCellStyle10.WrapMode = DataGridViewTriState.False;
+			BestSellerTable.DefaultCellStyle = dataGridViewCellStyle10;
 			BestSellerTable.GridColor = SystemColors.Window;
 			BestSellerTable.Location = new Point(982, 522);
 			BestSellerTable.MultiSelect = false;
@@ -370,32 +389,32 @@
 			label6.TabIndex = 71;
 			label6.Text = "Popular Genres";
 			// 
-			// PopularGenresTable
+			// TodayGenresTable
 			// 
-			PopularGenresTable.AllowUserToAddRows = false;
-			PopularGenresTable.AllowUserToDeleteRows = false;
-			PopularGenresTable.AllowUserToResizeRows = false;
-			PopularGenresTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-			PopularGenresTable.BackgroundColor = SystemColors.Window;
-			PopularGenresTable.BorderStyle = BorderStyle.None;
-			PopularGenresTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle4.BackColor = SystemColors.Window;
-			dataGridViewCellStyle4.Font = new Font("Segoe UI", 10F);
-			dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-			dataGridViewCellStyle4.SelectionBackColor = SystemColors.ControlLight;
-			dataGridViewCellStyle4.SelectionForeColor = Color.Black;
-			dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-			PopularGenresTable.DefaultCellStyle = dataGridViewCellStyle4;
-			PopularGenresTable.GridColor = SystemColors.Window;
-			PopularGenresTable.Location = new Point(510, 519);
-			PopularGenresTable.MultiSelect = false;
-			PopularGenresTable.Name = "PopularGenresTable";
-			PopularGenresTable.ReadOnly = true;
-			PopularGenresTable.RowHeadersVisible = false;
-			PopularGenresTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-			PopularGenresTable.Size = new Size(426, 385);
-			PopularGenresTable.TabIndex = 69;
+			TodayGenresTable.AllowUserToAddRows = false;
+			TodayGenresTable.AllowUserToDeleteRows = false;
+			TodayGenresTable.AllowUserToResizeRows = false;
+			TodayGenresTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+			TodayGenresTable.BackgroundColor = SystemColors.Window;
+			TodayGenresTable.BorderStyle = BorderStyle.None;
+			TodayGenresTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle11.BackColor = SystemColors.Window;
+			dataGridViewCellStyle11.Font = new Font("Segoe UI", 10F);
+			dataGridViewCellStyle11.ForeColor = SystemColors.ControlText;
+			dataGridViewCellStyle11.SelectionBackColor = SystemColors.ControlLight;
+			dataGridViewCellStyle11.SelectionForeColor = Color.Black;
+			dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
+			TodayGenresTable.DefaultCellStyle = dataGridViewCellStyle11;
+			TodayGenresTable.GridColor = SystemColors.Window;
+			TodayGenresTable.Location = new Point(6, 6);
+			TodayGenresTable.MultiSelect = false;
+			TodayGenresTable.Name = "TodayGenresTable";
+			TodayGenresTable.ReadOnly = true;
+			TodayGenresTable.RowHeadersVisible = false;
+			TodayGenresTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+			TodayGenresTable.Size = new Size(405, 345);
+			TodayGenresTable.TabIndex = 69;
 			// 
 			// pictureBox4
 			// 
@@ -471,9 +490,9 @@
 			label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			label5.Location = new Point(415, 27);
 			label5.Name = "label5";
-			label5.Size = new Size(115, 21);
+			label5.Size = new Size(159, 21);
 			label5.TabIndex = 76;
-			label5.Text = "Total Sold Price";
+			label5.Text = "Total Today Sold Price";
 			// 
 			// TotalSoldPrice
 			// 
@@ -501,9 +520,9 @@
 			label11.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			label11.Location = new Point(735, 27);
 			label11.Name = "label11";
-			label11.Size = new Size(123, 21);
+			label11.Size = new Size(167, 21);
 			label11.TabIndex = 76;
-			label11.Text = "Total Sold Vinyls";
+			label11.Text = "Total Today Sold Vinyls";
 			// 
 			// TotalSoldVinyl
 			// 
@@ -525,15 +544,15 @@
 			pictureBox8.TabIndex = 77;
 			pictureBox8.TabStop = false;
 			// 
-			// label13
+			// TotalAllVinyl
 			// 
-			label13.AutoSize = true;
-			label13.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			label13.Location = new Point(735, 91);
-			label13.Name = "label13";
-			label13.Size = new Size(125, 17);
-			label13.TabIndex = 79;
-			label13.Text = "56% from yesterday";
+			TotalAllVinyl.AutoSize = true;
+			TotalAllVinyl.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			TotalAllVinyl.Location = new Point(735, 91);
+			TotalAllVinyl.Name = "TotalAllVinyl";
+			TotalAllVinyl.Size = new Size(125, 17);
+			TotalAllVinyl.TabIndex = 79;
+			TotalAllVinyl.Text = "56% from yesterday";
 			// 
 			// label14
 			// 
@@ -541,9 +560,9 @@
 			label14.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			label14.Location = new Point(1054, 27);
 			label14.Name = "label14";
-			label14.Size = new Size(113, 21);
+			label14.Size = new Size(157, 21);
 			label14.TabIndex = 76;
-			label14.Text = "Total Paid Price";
+			label14.Text = "Total Today Paid Price";
 			// 
 			// TotalPaidPrice
 			// 
@@ -565,35 +584,35 @@
 			pictureBox9.TabIndex = 77;
 			pictureBox9.TabStop = false;
 			// 
-			// label16
+			// TotalAllPaidPrice
 			// 
-			label16.AutoSize = true;
-			label16.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			label16.Location = new Point(1054, 91);
-			label16.Name = "label16";
-			label16.Size = new Size(125, 17);
-			label16.TabIndex = 79;
-			label16.Text = "54% from yesterday";
+			TotalAllPaidPrice.AutoSize = true;
+			TotalAllPaidPrice.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			TotalAllPaidPrice.Location = new Point(1054, 91);
+			TotalAllPaidPrice.Name = "TotalAllPaidPrice";
+			TotalAllPaidPrice.Size = new Size(125, 17);
+			TotalAllPaidPrice.TabIndex = 79;
+			TotalAllPaidPrice.Text = "54% from yesterday";
+			// 
+			// tital
+			// 
+			tital.AutoSize = true;
+			tital.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			tital.Location = new Point(1372, 27);
+			tital.Name = "tital";
+			tital.Size = new Size(181, 21);
+			tital.TabIndex = 76;
+			tital.Text = "Total Today Remain Price";
 			// 
 			// TotalRemainPrice
 			// 
 			TotalRemainPrice.AutoSize = true;
-			TotalRemainPrice.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			TotalRemainPrice.Location = new Point(1372, 27);
+			TotalRemainPrice.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			TotalRemainPrice.Location = new Point(1372, 49);
 			TotalRemainPrice.Name = "TotalRemainPrice";
-			TotalRemainPrice.Size = new Size(137, 21);
+			TotalRemainPrice.Size = new Size(97, 32);
 			TotalRemainPrice.TabIndex = 76;
-			TotalRemainPrice.Text = "Total Remain Price";
-			// 
-			// label18
-			// 
-			label18.AutoSize = true;
-			label18.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			label18.Location = new Point(1372, 49);
-			label18.Name = "label18";
-			label18.Size = new Size(97, 32);
-			label18.TabIndex = 76;
-			label18.Text = "$128.89";
+			TotalRemainPrice.Text = "$128.89";
 			// 
 			// pictureBox10
 			// 
@@ -605,47 +624,186 @@
 			pictureBox10.TabIndex = 77;
 			pictureBox10.TabStop = false;
 			// 
-			// label19
+			// TotalAllRemainPrice
 			// 
-			label19.AutoSize = true;
-			label19.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			label19.Location = new Point(1372, 91);
-			label19.Name = "label19";
-			label19.Size = new Size(127, 17);
-			label19.TabIndex = 79;
-			label19.Text = "14% from tomorrow";
+			TotalAllRemainPrice.AutoSize = true;
+			TotalAllRemainPrice.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			TotalAllRemainPrice.Location = new Point(1372, 91);
+			TotalAllRemainPrice.Name = "TotalAllRemainPrice";
+			TotalAllRemainPrice.Size = new Size(127, 17);
+			TotalAllRemainPrice.TabIndex = 79;
+			TotalAllRemainPrice.Text = "14% from tomorrow";
 			// 
-			// label10
+			// TotalAllSoldPrice
 			// 
-			label10.AutoSize = true;
-			label10.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			label10.Location = new Point(415, 91);
-			label10.Name = "label10";
-			label10.Size = new Size(125, 17);
-			label10.TabIndex = 79;
-			label10.Text = "85% from yesterday";
+			TotalAllSoldPrice.AutoSize = true;
+			TotalAllSoldPrice.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			TotalAllSoldPrice.Location = new Point(415, 91);
+			TotalAllSoldPrice.Name = "TotalAllSoldPrice";
+			TotalAllSoldPrice.Size = new Size(126, 17);
+			TotalAllSoldPrice.TabIndex = 79;
+			TotalAllSoldPrice.Text = "$85.98 all total price";
+			// 
+			// tabControl
+			// 
+			tabControl.Controls.Add(tabToday);
+			tabControl.Controls.Add(tabWeek);
+			tabControl.Controls.Add(tabMonth);
+			tabControl.Controls.Add(tabYear);
+			tabControl.Location = new Point(510, 519);
+			tabControl.Name = "tabControl";
+			tabControl.SelectedIndex = 0;
+			tabControl.Size = new Size(425, 385);
+			tabControl.TabIndex = 80;
+			tabControl.Click += tabControl_Click;
+			// 
+			// tabToday
+			// 
+			tabToday.BackColor = SystemColors.Window;
+			tabToday.Controls.Add(TodayGenresTable);
+			tabToday.Location = new Point(4, 24);
+			tabToday.Name = "tabToday";
+			tabToday.Padding = new Padding(3);
+			tabToday.Size = new Size(417, 357);
+			tabToday.TabIndex = 0;
+			tabToday.Text = "Today";
+			// 
+			// tabWeek
+			// 
+			tabWeek.BackColor = SystemColors.Window;
+			tabWeek.Controls.Add(WeekGenresTable);
+			tabWeek.Location = new Point(4, 24);
+			tabWeek.Name = "tabWeek";
+			tabWeek.Padding = new Padding(3);
+			tabWeek.Size = new Size(417, 357);
+			tabWeek.TabIndex = 1;
+			tabWeek.Text = "Week";
+			// 
+			// WeekGenresTable
+			// 
+			WeekGenresTable.AllowUserToAddRows = false;
+			WeekGenresTable.AllowUserToDeleteRows = false;
+			WeekGenresTable.AllowUserToResizeRows = false;
+			WeekGenresTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+			WeekGenresTable.BackgroundColor = SystemColors.Window;
+			WeekGenresTable.BorderStyle = BorderStyle.None;
+			WeekGenresTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle12.BackColor = SystemColors.Window;
+			dataGridViewCellStyle12.Font = new Font("Segoe UI", 10F);
+			dataGridViewCellStyle12.ForeColor = SystemColors.ControlText;
+			dataGridViewCellStyle12.SelectionBackColor = SystemColors.ControlLight;
+			dataGridViewCellStyle12.SelectionForeColor = Color.Black;
+			dataGridViewCellStyle12.WrapMode = DataGridViewTriState.False;
+			WeekGenresTable.DefaultCellStyle = dataGridViewCellStyle12;
+			WeekGenresTable.GridColor = SystemColors.Window;
+			WeekGenresTable.Location = new Point(6, 6);
+			WeekGenresTable.MultiSelect = false;
+			WeekGenresTable.Name = "WeekGenresTable";
+			WeekGenresTable.ReadOnly = true;
+			WeekGenresTable.RowHeadersVisible = false;
+			WeekGenresTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+			WeekGenresTable.Size = new Size(405, 345);
+			WeekGenresTable.TabIndex = 70;
+			// 
+			// tabMonth
+			// 
+			tabMonth.BackColor = SystemColors.Window;
+			tabMonth.Controls.Add(MonthGenresTable);
+			tabMonth.Location = new Point(4, 24);
+			tabMonth.Name = "tabMonth";
+			tabMonth.Padding = new Padding(3);
+			tabMonth.Size = new Size(417, 357);
+			tabMonth.TabIndex = 2;
+			tabMonth.Text = "Month";
+			// 
+			// MonthGenresTable
+			// 
+			MonthGenresTable.AllowUserToAddRows = false;
+			MonthGenresTable.AllowUserToDeleteRows = false;
+			MonthGenresTable.AllowUserToResizeRows = false;
+			MonthGenresTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+			MonthGenresTable.BackgroundColor = SystemColors.Window;
+			MonthGenresTable.BorderStyle = BorderStyle.None;
+			MonthGenresTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle13.BackColor = SystemColors.Window;
+			dataGridViewCellStyle13.Font = new Font("Segoe UI", 10F);
+			dataGridViewCellStyle13.ForeColor = SystemColors.ControlText;
+			dataGridViewCellStyle13.SelectionBackColor = SystemColors.ControlLight;
+			dataGridViewCellStyle13.SelectionForeColor = Color.Black;
+			dataGridViewCellStyle13.WrapMode = DataGridViewTriState.False;
+			MonthGenresTable.DefaultCellStyle = dataGridViewCellStyle13;
+			MonthGenresTable.GridColor = SystemColors.Window;
+			MonthGenresTable.Location = new Point(6, 6);
+			MonthGenresTable.MultiSelect = false;
+			MonthGenresTable.Name = "MonthGenresTable";
+			MonthGenresTable.ReadOnly = true;
+			MonthGenresTable.RowHeadersVisible = false;
+			MonthGenresTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+			MonthGenresTable.Size = new Size(405, 345);
+			MonthGenresTable.TabIndex = 70;
+			// 
+			// tabYear
+			// 
+			tabYear.BackColor = SystemColors.Window;
+			tabYear.Controls.Add(YearGenresTable);
+			tabYear.Location = new Point(4, 24);
+			tabYear.Name = "tabYear";
+			tabYear.Padding = new Padding(3);
+			tabYear.Size = new Size(417, 357);
+			tabYear.TabIndex = 3;
+			tabYear.Text = "Year";
+			// 
+			// YearGenresTable
+			// 
+			YearGenresTable.AllowUserToAddRows = false;
+			YearGenresTable.AllowUserToDeleteRows = false;
+			YearGenresTable.AllowUserToResizeRows = false;
+			YearGenresTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+			YearGenresTable.BackgroundColor = SystemColors.Window;
+			YearGenresTable.BorderStyle = BorderStyle.None;
+			YearGenresTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle14.BackColor = SystemColors.Window;
+			dataGridViewCellStyle14.Font = new Font("Segoe UI", 10F);
+			dataGridViewCellStyle14.ForeColor = SystemColors.ControlText;
+			dataGridViewCellStyle14.SelectionBackColor = SystemColors.ControlLight;
+			dataGridViewCellStyle14.SelectionForeColor = Color.Black;
+			dataGridViewCellStyle14.WrapMode = DataGridViewTriState.False;
+			YearGenresTable.DefaultCellStyle = dataGridViewCellStyle14;
+			YearGenresTable.GridColor = SystemColors.Window;
+			YearGenresTable.Location = new Point(6, 6);
+			YearGenresTable.MultiSelect = false;
+			YearGenresTable.Name = "YearGenresTable";
+			YearGenresTable.ReadOnly = true;
+			YearGenresTable.RowHeadersVisible = false;
+			YearGenresTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+			YearGenresTable.Size = new Size(405, 345);
+			YearGenresTable.TabIndex = 70;
 			// 
 			// Dashboard
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = SystemColors.Window;
-			Controls.Add(label19);
-			Controls.Add(label16);
-			Controls.Add(label13);
-			Controls.Add(label10);
+			Controls.Add(tabControl);
+			Controls.Add(TotalAllRemainPrice);
+			Controls.Add(TotalAllPaidPrice);
+			Controls.Add(TotalAllVinyl);
+			Controls.Add(TotalAllSoldPrice);
 			Controls.Add(NewReleaseToday);
 			Controls.Add(pictureBox10);
 			Controls.Add(pictureBox9);
 			Controls.Add(pictureBox8);
 			Controls.Add(pictureBox7);
 			Controls.Add(pictureBox6);
-			Controls.Add(label18);
+			Controls.Add(TotalRemainPrice);
 			Controls.Add(TotalPaidPrice);
 			Controls.Add(TotalSoldVinyl);
 			Controls.Add(TotalSoldPrice);
 			Controls.Add(TotalVinyl);
-			Controls.Add(TotalRemainPrice);
+			Controls.Add(tital);
 			Controls.Add(label14);
 			Controls.Add(label11);
 			Controls.Add(label5);
@@ -656,7 +814,6 @@
 			Controls.Add(pictureBox5);
 			Controls.Add(label6);
 			Controls.Add(PopularGenresRows);
-			Controls.Add(PopularGenresTable);
 			Controls.Add(button9);
 			Controls.Add(BestSellerRows);
 			Controls.Add(BestSellerTable);
@@ -687,13 +844,21 @@
 			((System.ComponentModel.ISupportInitialize)PopularBandsTable).EndInit();
 			((System.ComponentModel.ISupportInitialize)BestSellerTable).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
-			((System.ComponentModel.ISupportInitialize)PopularGenresTable).EndInit();
+			((System.ComponentModel.ISupportInitialize)TodayGenresTable).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
+			tabControl.ResumeLayout(false);
+			tabToday.ResumeLayout(false);
+			tabWeek.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)WeekGenresTable).EndInit();
+			tabMonth.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)MonthGenresTable).EndInit();
+			tabYear.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)YearGenresTable).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -724,7 +889,7 @@
 		private Button button9;
 		private PictureBox pictureBox5;
 		private Label label6;
-		private DataGridView PopularGenresTable;
+		private DataGridView TodayGenresTable;
 		private PictureBox pictureBox4;
 		private Label Analyticts;
 		private Button button10;
@@ -738,15 +903,23 @@
 		private Label label11;
 		private Label TotalSoldVinyl;
 		private PictureBox pictureBox8;
-		private Label label13;
+		private Label TotalAllVinyl;
 		private Label label14;
 		private Label TotalPaidPrice;
 		private PictureBox pictureBox9;
-		private Label label16;
+		private Label TotalAllPaidPrice;
+		private Label tital;
 		private Label TotalRemainPrice;
-		private Label label18;
 		private PictureBox pictureBox10;
-		private Label label19;
-		private Label label10;
+		private Label TotalAllRemainPrice;
+		private Label TotalAllSoldPrice;
+		private TabControl tabControl;
+		private TabPage tabToday;
+		private TabPage tabWeek;
+		private TabPage tabMonth;
+		private TabPage tabYear;
+		private DataGridView WeekGenresTable;
+		private DataGridView MonthGenresTable;
+		private DataGridView YearGenresTable;
 	}
 }

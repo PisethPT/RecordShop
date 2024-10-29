@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			components = new System.ComponentModel.Container();
 			panel1 = new Panel();
 			VinylId = new TextBox();
 			label1 = new Label();
@@ -56,6 +57,10 @@
 			BtnReset = new Button();
 			Tittle = new Label();
 			pictureBox1 = new PictureBox();
+			vinylNameRequire = new ErrorProvider(components);
+			NumberOfTrackRequire = new ErrorProvider(components);
+			PrimeCostRequire = new ErrorProvider(components);
+			SalePriceRequire = new ErrorProvider(components);
 			panel1.SuspendLayout();
 			panel2.SuspendLayout();
 			panel3.SuspendLayout();
@@ -68,6 +73,10 @@
 			panel8.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)SalePrice).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+			((System.ComponentModel.ISupportInitialize)vinylNameRequire).BeginInit();
+			((System.ComponentModel.ISupportInitialize)NumberOfTrackRequire).BeginInit();
+			((System.ComponentModel.ISupportInitialize)PrimeCostRequire).BeginInit();
+			((System.ComponentModel.ISupportInitialize)SalePriceRequire).BeginInit();
 			SuspendLayout();
 			// 
 			// panel1
@@ -117,6 +126,7 @@
 			VinylName.Name = "VinylName";
 			VinylName.Size = new Size(381, 27);
 			VinylName.TabIndex = 1;
+			VinylName.TextChanged += VinylName_TextChanged;
 			// 
 			// label2
 			// 
@@ -203,6 +213,7 @@
 			PrimeCost.Size = new Size(209, 27);
 			PrimeCost.TabIndex = 3;
 			PrimeCost.TextAlign = HorizontalAlignment.Center;
+			PrimeCost.ValueChanged += PrimeCost_ValueChanged;
 			// 
 			// label5
 			// 
@@ -232,6 +243,7 @@
 			NumberOfTrack.Size = new Size(132, 27);
 			NumberOfTrack.TabIndex = 2;
 			NumberOfTrack.TextAlign = HorizontalAlignment.Center;
+			NumberOfTrack.ValueChanged += NumberOfTrack_ValueChanged;
 			// 
 			// label6
 			// 
@@ -289,6 +301,7 @@
 			SalePrice.Size = new Size(209, 27);
 			SalePrice.TabIndex = 4;
 			SalePrice.TextAlign = HorizontalAlignment.Center;
+			SalePrice.ValueChanged += SalePrice_ValueChanged;
 			// 
 			// label8
 			// 
@@ -347,6 +360,22 @@
 			pictureBox1.TabIndex = 9;
 			pictureBox1.TabStop = false;
 			// 
+			// vinylNameRequire
+			// 
+			vinylNameRequire.ContainerControl = this;
+			// 
+			// NumberOfTrackRequire
+			// 
+			NumberOfTrackRequire.ContainerControl = this;
+			// 
+			// PrimeCostRequire
+			// 
+			PrimeCostRequire.ContainerControl = this;
+			// 
+			// SalePriceRequire
+			// 
+			SalePriceRequire.ContainerControl = this;
+			// 
 			// ModifyVinyl
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -393,6 +422,10 @@
 			panel8.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)SalePrice).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+			((System.ComponentModel.ISupportInitialize)vinylNameRequire).EndInit();
+			((System.ComponentModel.ISupportInitialize)NumberOfTrackRequire).EndInit();
+			((System.ComponentModel.ISupportInitialize)PrimeCostRequire).EndInit();
+			((System.ComponentModel.ISupportInitialize)SalePriceRequire).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -427,5 +460,9 @@
 		public NumericUpDown PrimeCost;
 		public DateTimePicker DateOfPublishing;
 		public NumericUpDown SalePrice;
+		private ErrorProvider vinylNameRequire;
+		private ErrorProvider NumberOfTrackRequire;
+		private ErrorProvider PrimeCostRequire;
+		private ErrorProvider SalePriceRequire;
 	}
 }

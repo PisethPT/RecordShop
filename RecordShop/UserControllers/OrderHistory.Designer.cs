@@ -29,7 +29,7 @@
 		private void InitializeComponent()
 		{
 			DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-			BuyersRows = new Label();
+			OrderRows = new Label();
 			SearchField = new TextBox();
 			OrderHistoryListTable = new DataGridView();
 			pictureBox2 = new PictureBox();
@@ -39,15 +39,15 @@
 			((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
 			SuspendLayout();
 			// 
-			// BuyersRows
+			// OrderRows
 			// 
-			BuyersRows.AutoSize = true;
-			BuyersRows.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			BuyersRows.Location = new Point(25, 916);
-			BuyersRows.Name = "BuyersRows";
-			BuyersRows.Size = new Size(70, 20);
-			BuyersRows.TabIndex = 64;
-			BuyersRows.Text = "Rows: 0.0";
+			OrderRows.AutoSize = true;
+			OrderRows.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			OrderRows.Location = new Point(25, 916);
+			OrderRows.Name = "OrderRows";
+			OrderRows.Size = new Size(70, 20);
+			OrderRows.TabIndex = 64;
+			OrderRows.Text = "Rows: 0.0";
 			// 
 			// SearchField
 			// 
@@ -55,9 +55,10 @@
 			SearchField.Location = new Point(194, 58);
 			SearchField.Multiline = true;
 			SearchField.Name = "SearchField";
-			SearchField.PlaceholderText = "Search By Name";
+			SearchField.PlaceholderText = "Search By Buyer's Name";
 			SearchField.Size = new Size(476, 28);
 			SearchField.TabIndex = 63;
+			SearchField.TextChanged += SearchField_TextChanged;
 			// 
 			// OrderHistoryListTable
 			// 
@@ -119,7 +120,7 @@
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = SystemColors.Window;
-			Controls.Add(BuyersRows);
+			Controls.Add(OrderRows);
 			Controls.Add(SearchField);
 			Controls.Add(OrderHistoryListTable);
 			Controls.Add(pictureBox2);
@@ -135,7 +136,7 @@
 
 		#endregion
 
-		private Label BuyersRows;
+		private Label OrderRows;
 		private TextBox SearchField;
 		private DataGridView OrderHistoryListTable;
 		private PictureBox pictureBox2;

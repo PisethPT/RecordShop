@@ -15,7 +15,7 @@ namespace RecordShop.UserControllers
 
 			GetAllSellers(context.Sellers.ToList());
 
-			
+
 			this.BtnDelete.Enabled = false;
 			this.BtnModify.Text = "Create";
 		}
@@ -77,6 +77,7 @@ namespace RecordShop.UserControllers
 			var seller = new Models.Seller();
 			if (string.IsNullOrEmpty(this.SellerName.Text) || string.IsNullOrWhiteSpace(this.SellerName.Text))
 			{
+				this.SellerNameRequire.SetError(this.SellerName, "Seller's name require.");
 				return;
 			}
 			else
@@ -86,6 +87,7 @@ namespace RecordShop.UserControllers
 
 			if (string.IsNullOrEmpty(this.Phone.Text) || string.IsNullOrWhiteSpace(this.Phone.Text))
 			{
+				this.PhoneRequire.SetError(this.Phone, "Phone number is require.");
 				return;
 			}
 			else
@@ -95,6 +97,7 @@ namespace RecordShop.UserControllers
 
 			if (string.IsNullOrEmpty(this.RichAddress.Text) || string.IsNullOrWhiteSpace(this.RichAddress.Text))
 			{
+				this.AddressRequire.SetError(this.RichAddress, "Address is require.");
 				return;
 			}
 			else
@@ -110,7 +113,8 @@ namespace RecordShop.UserControllers
 				seller.Created = DateTime.Now;
 				context.Sellers.Add(seller);
 				context.SaveChanges();
-			}else if(this.BtnModify.Text == "Update")
+			}
+			else if (this.BtnModify.Text == "Update")
 			{
 				var existingSeller = context.Sellers.FirstOrDefault(s => s.SellerId == sellerId);
 				if (existingSeller != null)
@@ -159,5 +163,10 @@ namespace RecordShop.UserControllers
 			}
 		}
 
+		private void SellerName_TextChanged(object sender, EventArgs e) => this.SellerNameRequire.SetError(this.SellerName, "Seller's name require.");
+
+		private void Phone_TextChanged(object sender, EventArgs e) => this.PhoneRequire.SetError(this.Phone, string.Empty);
+
+		private void RichAddress_TextChanged(object sender, EventArgs e) => this.AddressRequire.SetError(this.RichAddress, string.Empty);
 	}
 }

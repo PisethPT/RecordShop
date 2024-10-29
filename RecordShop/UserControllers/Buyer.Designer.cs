@@ -28,7 +28,8 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+			components = new System.ComponentModel.Container();
+			DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
 			BuyersRows = new Label();
 			SearchField = new TextBox();
 			BuyersListTable = new DataGridView();
@@ -53,6 +54,9 @@
 			pictureBox2 = new PictureBox();
 			label2 = new Label();
 			button7 = new Button();
+			BuyerNameRequire = new ErrorProvider(components);
+			PhoneRequire = new ErrorProvider(components);
+			AddressRequire = new ErrorProvider(components);
 			((System.ComponentModel.ISupportInitialize)BuyersListTable).BeginInit();
 			panel4.SuspendLayout();
 			panel3.SuspendLayout();
@@ -60,6 +64,9 @@
 			panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+			((System.ComponentModel.ISupportInitialize)BuyerNameRequire).BeginInit();
+			((System.ComponentModel.ISupportInitialize)PhoneRequire).BeginInit();
+			((System.ComponentModel.ISupportInitialize)AddressRequire).BeginInit();
 			SuspendLayout();
 			// 
 			// BuyersRows
@@ -92,14 +99,14 @@
 			BuyersListTable.BackgroundColor = SystemColors.Window;
 			BuyersListTable.BorderStyle = BorderStyle.None;
 			BuyersListTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle1.BackColor = SystemColors.Window;
-			dataGridViewCellStyle1.Font = new Font("Segoe UI", 10F);
-			dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
-			dataGridViewCellStyle1.SelectionBackColor = SystemColors.ControlLight;
-			dataGridViewCellStyle1.SelectionForeColor = Color.Black;
-			dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-			BuyersListTable.DefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle3.BackColor = SystemColors.Window;
+			dataGridViewCellStyle3.Font = new Font("Segoe UI", 10F);
+			dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+			dataGridViewCellStyle3.SelectionBackColor = SystemColors.ControlLight;
+			dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+			dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+			BuyersListTable.DefaultCellStyle = dataGridViewCellStyle3;
 			BuyersListTable.GridColor = SystemColors.Window;
 			BuyersListTable.Location = new Point(28, 106);
 			BuyersListTable.MultiSelect = false;
@@ -171,6 +178,7 @@
 			RichAddress.Size = new Size(381, 178);
 			RichAddress.TabIndex = 2;
 			RichAddress.Text = "";
+			RichAddress.TextChanged += RichAddress_TextChanged;
 			// 
 			// label6
 			// 
@@ -198,6 +206,7 @@
 			Phone.Name = "Phone";
 			Phone.Size = new Size(381, 27);
 			Phone.TabIndex = 1;
+			Phone.TextChanged += Phone_TextChanged;
 			// 
 			// label5
 			// 
@@ -225,6 +234,7 @@
 			BuyerName.Name = "BuyerName";
 			BuyerName.Size = new Size(381, 27);
 			BuyerName.TabIndex = 1;
+			BuyerName.TextChanged += BuyerName_TextChanged;
 			// 
 			// label4
 			// 
@@ -323,6 +333,18 @@
 			button7.TabIndex = 46;
 			button7.UseVisualStyleBackColor = false;
 			// 
+			// BuyerNameRequire
+			// 
+			BuyerNameRequire.ContainerControl = this;
+			// 
+			// PhoneRequire
+			// 
+			PhoneRequire.ContainerControl = this;
+			// 
+			// AddressRequire
+			// 
+			AddressRequire.ContainerControl = this;
+			// 
 			// Buyer
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -357,6 +379,9 @@
 			panel1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+			((System.ComponentModel.ISupportInitialize)BuyerNameRequire).EndInit();
+			((System.ComponentModel.ISupportInitialize)PhoneRequire).EndInit();
+			((System.ComponentModel.ISupportInitialize)AddressRequire).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -387,5 +412,8 @@
 		private PictureBox pictureBox2;
 		private Label label2;
 		private Button button7;
+		private ErrorProvider BuyerNameRequire;
+		private ErrorProvider PhoneRequire;
+		private ErrorProvider AddressRequire;
 	}
 }

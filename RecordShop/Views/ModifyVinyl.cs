@@ -38,6 +38,7 @@ namespace RecordShop.Views
 			var vinyl = new Vinyl();
 			if (string.IsNullOrEmpty(this.VinylName.Text) || string.IsNullOrWhiteSpace(this.VinylName.Text))
 			{
+				this.vinylNameRequire.SetError(this.VinylName, "Vinyls name require.");
 				return;
 			}
 			else
@@ -47,6 +48,7 @@ namespace RecordShop.Views
 
 			if (this.NumberOfTrack.Value <= 0)
 			{
+				this.NumberOfTrackRequire.SetError(this.NumberOfTrack, "Number of track must be bigger than 0.");
 				return;
 			}
 			else
@@ -56,6 +58,7 @@ namespace RecordShop.Views
 
 			if (this.PrimeCost.Value <= 0)
 			{
+				this.PrimeCostRequire.SetError(this.PrimeCost, "Prime Cost must be bigger than 0.");
 				return;
 			}
 			else
@@ -63,8 +66,9 @@ namespace RecordShop.Views
 				vinyl.PrimeCost = (double)this.PrimeCost.Value;
 			}
 
-			if (this.SalePrice.Value <= 0)
+			if (this.SalePrice.Value <= 0 || this.SalePrice.Value < this.PrimeCost.Value)
 			{
+				this.SalePriceRequire.SetError(this.SalePrice, "Sale price must be bigger than 0 or Prime Cost.");
 				return;
 			}
 			else
@@ -98,7 +102,7 @@ namespace RecordShop.Views
 					context.Vinyls.Update(existingVinyl);
 					context.SaveChanges();
 				}
-				
+
 			}
 			ClearFields();
 		}
@@ -119,5 +123,24 @@ namespace RecordShop.Views
 		}
 
 		private void BtnReset_Click(object sender, EventArgs e) => ClearFields();
+
+		private void VinylName_TextChanged(object sender, EventArgs e) => this.vinylNameRequire.SetError(this.VinylName, string.Empty);
+
+		private void NumberOfTrack_ValueChanged(object sender, EventArgs e)
+		{
+			if (this.NumberOfTrack.Value > 0)
+				this.NumberOfTrackRequire.SetError(this.NumberOfTrack, string.Empty);
+		}
+		private void PrimeCost_ValueChanged(object sender, EventArgs e)
+		{
+			if (this.PrimeCost.Value > 0)
+				this.PrimeCostRequire.SetError(this.PrimeCost, string.Empty);
+		}
+
+		private void SalePrice_ValueChanged(object sender, EventArgs e)
+		{
+			if(this.SalePrice.Value > 0)
+				this.SalePriceRequire.SetError(this.SalePrice, string.Empty);
+		}
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using RecordShop.Statics;
 using RecordShop.UserControllers;
+using static RecordShop.Program;
 
 namespace RecordShop.Views
 {
@@ -22,7 +23,8 @@ namespace RecordShop.Views
 		public Shop()
 		{
 			InitializeComponent();
-			if(this is not null)
+			this.Username.Text = RecordShop.Views.Login.Username;
+			if (this is not null)
 			{
 				StaticComponents.orderNotificationCount = this.orderNotificationCount;
 			}
@@ -124,6 +126,21 @@ namespace RecordShop.Views
 
 		private void BtnOrderHistoryOption_Click(object sender, EventArgs e) => SelectSystemOptions(SystemOption.OrderHistory);
 
+		private void Shop_FormClosed(object sender, FormClosedEventArgs e) => login.Close();
+
+		private void BtnLogout_Click(object sender, EventArgs e)
+		{
+			var result = MessageBox.Show("Do you want log out ?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+			if (result.Equals(DialogResult.Yes))
+			{
+				this.Dispose();
+				login.TextUsername.Text = RecordShop.Views.Login.Username;
+				login.TextPassword.Text = string.Empty;
+				RecordShop.Views.Login.Password = string.Empty;
+				login.BtnLogin.Enabled = true;
+				login.Show();
+			}
+		}
 	}
 
 

@@ -51,8 +51,10 @@
 			BtnSettingsOption = new Button();
 			panel8 = new Panel();
 			BtnLogout = new Button();
-			button8 = new Button();
+			BntUserInfo = new Button();
 			FlowContainPanel = new FlowLayoutPanel();
+			Username = new Label();
+			flowLayoutPanel2 = new FlowLayoutPanel();
 			panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
 			flowLayoutPanel1.SuspendLayout();
@@ -64,6 +66,7 @@
 			panel9.SuspendLayout();
 			panel7.SuspendLayout();
 			panel8.SuspendLayout();
+			flowLayoutPanel2.SuspendLayout();
 			SuspendLayout();
 			// 
 			// panel1
@@ -328,21 +331,21 @@
 			BtnLogout.TabIndex = 0;
 			BtnLogout.Text = "LOG OUT";
 			BtnLogout.UseVisualStyleBackColor = true;
+			BtnLogout.Click += BtnLogout_Click;
 			// 
-			// button8
+			// BntUserInfo
 			// 
-			button8.FlatAppearance.BorderSize = 0;
-			button8.FlatStyle = FlatStyle.Flat;
-			button8.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			button8.Image = Properties.Resources.icons8_admin_settings_male_301;
-			button8.ImageAlign = ContentAlignment.MiddleRight;
-			button8.Location = new Point(1773, 4);
-			button8.Name = "button8";
-			button8.Size = new Size(119, 46);
-			button8.TabIndex = 5;
-			button8.Text = "Admin";
-			button8.TextAlign = ContentAlignment.MiddleLeft;
-			button8.UseVisualStyleBackColor = true;
+			BntUserInfo.FlatAppearance.BorderSize = 0;
+			BntUserInfo.FlatStyle = FlatStyle.Flat;
+			BntUserInfo.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			BntUserInfo.Image = Properties.Resources.icons8_admin_settings_male_301;
+			BntUserInfo.ImageAlign = ContentAlignment.MiddleRight;
+			BntUserInfo.Location = new Point(1856, 4);
+			BntUserInfo.Name = "BntUserInfo";
+			BntUserInfo.Size = new Size(36, 46);
+			BntUserInfo.TabIndex = 5;
+			BntUserInfo.TextAlign = ContentAlignment.MiddleLeft;
+			BntUserInfo.UseVisualStyleBackColor = true;
 			// 
 			// FlowContainPanel
 			// 
@@ -351,13 +354,33 @@
 			FlowContainPanel.Size = new Size(1605, 976);
 			FlowContainPanel.TabIndex = 4;
 			// 
+			// Username
+			// 
+			Username.AutoSize = true;
+			Username.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			Username.Location = new Point(116, 0);
+			Username.Name = "Username";
+			Username.Size = new Size(81, 21);
+			Username.TabIndex = 6;
+			Username.Text = "Username";
+			// 
+			// flowLayoutPanel2
+			// 
+			flowLayoutPanel2.Controls.Add(Username);
+			flowLayoutPanel2.FlowDirection = FlowDirection.RightToLeft;
+			flowLayoutPanel2.Location = new Point(1650, 18);
+			flowLayoutPanel2.Name = "flowLayoutPanel2";
+			flowLayoutPanel2.Size = new Size(200, 26);
+			flowLayoutPanel2.TabIndex = 7;
+			// 
 			// Shop
 			// 
 			AutoScaleDimensions = new SizeF(7F, 17F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = SystemColors.Window;
 			ClientSize = new Size(1904, 1041);
-			Controls.Add(button8);
+			Controls.Add(flowLayoutPanel2);
+			Controls.Add(BntUserInfo);
 			Controls.Add(FlowContainPanel);
 			Controls.Add(panel8);
 			Controls.Add(flowLayoutPanel1);
@@ -366,6 +389,7 @@
 			MaximizeBox = false;
 			Name = "Shop";
 			Text = "Vinyls Shop";
+			FormClosed += Shop_FormClosed;
 			panel1.ResumeLayout(false);
 			panel1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -378,6 +402,8 @@
 			panel9.ResumeLayout(false);
 			panel7.ResumeLayout(false);
 			panel8.ResumeLayout(false);
+			flowLayoutPanel2.ResumeLayout(false);
+			flowLayoutPanel2.PerformLayout();
 			ResumeLayout(false);
 		}
 
@@ -408,10 +434,12 @@
 		private Button BtnSettingsOption;
 		private Panel panel8;
 		private Button BtnLogout;
-		private Button button8;
+		private Button BntUserInfo;
 		private FlowLayoutPanel FlowContainPanel;
 		private Panel panel9;
 		private Button BtnOrderHistoryOption;
 		private Button orderNotificationCount;
+		private Label Username;
+		private FlowLayoutPanel flowLayoutPanel2;
 	}
 }

@@ -45,7 +45,7 @@ namespace RecordShop.UserControllers
 				table.Rows.Add(row);
 			}
 			this.OrderHistoryListTable.DataSource = table;
-
+			this.OrderRows.Text = $"Rows: {table.Rows.Count.ToString("F2")}";
 			try
 			{
 				if (!this.OrderHistoryListTable.Columns[0].HeaderText.Equals("Order Detail"))
@@ -84,7 +84,7 @@ namespace RecordShop.UserControllers
 		{
 			OrderHeadInfo orderHeadInfo = new OrderHeadInfo();
 			orderHeadInfo.BuyerName = this.OrderHistoryListTable.Rows[rowIndex].Cells[3].Value.ToString()!;
-			orderHeadInfo.Subtotal = int.Parse(this.OrderHistoryListTable.Rows[rowIndex].Cells[4].Value.ToString()!.Replace(".0",""));
+			orderHeadInfo.Subtotal = int.Parse(this.OrderHistoryListTable.Rows[rowIndex].Cells[4].Value.ToString()!.Replace(".0", ""));
 			orderHeadInfo.Remain = double.Parse(this.OrderHistoryListTable.Rows[rowIndex].Cells[6].Value.ToString()!.Trim('$')!);
 			orderHeadInfo.TotalPayable = double.Parse(this.OrderHistoryListTable.Rows[rowIndex].Cells[7].Value.ToString()!.Trim('$'));
 
@@ -104,6 +104,17 @@ namespace RecordShop.UserControllers
 
 
 			return orderHeadInfo;
+		}
+
+		private void SearchField_TextChanged(object sender, EventArgs e)
+		{
+			if (string.IsNullOrEmpty(this.SearchField.Text) || string.IsNullOrWhiteSpace(this.SearchField.Text))
+				GetOrderHistory(context.Sales.ToList());
+			else
+			{
+				var detail = context.Sales.Where(s => s.Buyer!.BuyerName.ToLower().StartsWith(this.SearchField.Text.ToLower())).ToList();
+				GetOrderHistory(detail);
+			}
 		}
 	}
 }

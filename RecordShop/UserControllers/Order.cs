@@ -14,6 +14,7 @@ namespace RecordShop.UserControllers
 		public decimal previousPaidValue = 1;
 		public decimal previousRemainValue = 1;
 		public int MyProperty { get; set; }
+		private string bandName = string.Empty;
 		public Order()
 		{
 			InitializeComponent();
@@ -37,9 +38,9 @@ namespace RecordShop.UserControllers
 			GetBuyers();
 			GetVinyl(context.Vinyls.ToList());
 			GetBands();
+			GetAllBandDefault();
 			invoiceId = int.Parse((context.Sales.Count() + 1).ToString());
 			this.InvoiceId.Text = invoiceId.ToString();
-
 			saleDetailId = int.Parse((context.SaleDetails.Count() + 1).ToString());
 		}
 
@@ -72,11 +73,13 @@ namespace RecordShop.UserControllers
 		private void GetBands()
 		{
 			this.FlowBandContainer.Controls.Clear();
+			this.FlowBandContainer.Controls.Add(BandButton("All"));
 			foreach (var band in context.Bands)
 			{
 				var bandButton = BandButton(band.BandName);
 				this.FlowBandContainer.Controls.Add(bandButton);
 			}
+
 		}
 
 		private void GetSellers()
@@ -114,10 +117,35 @@ namespace RecordShop.UserControllers
 			band.Click += (s, e) =>
 			{
 				// MessageBox.Show(band.Name.ToString());
-				band.Enabled = false;
-				band.BackColor = SystemColors.ControlLight;
+				this.SearchField.Text = string.Empty;
+				foreach (Button button in this.FlowBandContainer.Controls)
+				{
+					if (button.Text == bandName && bandName != "All")
+					{
+						SearchVinylByBand(bandName);
+						button.Enabled = false;
+						button.BackColor = SystemColors.ControlLight;
+					}else if(button.Text == "All" && bandName == "All")
+					{
+						GetVinyl(context.Vinyls.ToList());
+						button.Enabled = false;
+						button.BackColor = SystemColors.ControlLight;
+					}
+					else
+					{
+						button.Enabled = true;
+						button.BackColor = SystemColors.Window;
+					}
+				}
 			};
 			return band;
+		}
+
+		private void SearchVinylByBand(string bandName)
+		{
+			var bandId = context.Bands.FirstOrDefault(b => b.BandName == bandName)!.BandId;
+			var vinyl = context.Vinyls.Where(v => v.BandId == bandId).ToList();
+			GetVinyl(vinyl);
 		}
 
 		private void BtnSubmit_Click(object sender, EventArgs e)
@@ -301,6 +329,36 @@ namespace RecordShop.UserControllers
 			RecordShop.Statics.StaticComponents.PayableAmountDouble = 0d;
 			RecordShop.Statics.StaticComponents.SubtotalInt = 0;
 			RecordShop.Statics.StaticComponents.FlowOrderContainer.Controls.Clear();
+		}
+
+		private void SearchField_TextChanged(object sender, EventArgs e)
+		{
+			if (string.IsNullOrEmpty(this.SearchField.Text) || string.IsNullOrWhiteSpace(this.SearchField.Text))
+				GetVinyl(context.Vinyls.ToList());
+			else
+			{
+				var vinyl = context.Vinyls.Where(v => v.VinylName.ToLower().StartsWith(this.SearchField.Text.ToLower())).ToList();
+				GetVinyl(vinyl);
+				//var button = this.FlowBandContainer.Controls[0] as Button;
+				GetAllBandDefault();
+			}
+		}
+
+		private void GetAllBandDefault()
+		{
+			foreach (Button button in this.FlowBandContainer.Controls)
+			{
+				if (button.Text == "All")
+				{
+					button.Enabled = false;
+					button.BackColor = SystemColors.ControlLight;
+				}
+				else
+				{
+					button.Enabled = true;
+					button.BackColor = SystemColors.Window;
+				}
+			}
 		}
 	}
 }

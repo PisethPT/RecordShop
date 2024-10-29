@@ -28,7 +28,8 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+			components = new System.ComponentModel.Container();
+			DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
 			pictureBox2 = new PictureBox();
 			label2 = new Label();
 			button7 = new Button();
@@ -53,6 +54,9 @@
 			SellerslRows = new Label();
 			BtnCancel = new Button();
 			BtnDelete = new Button();
+			SellerNameRequire = new ErrorProvider(components);
+			PhoneRequire = new ErrorProvider(components);
+			AddressRequire = new ErrorProvider(components);
 			((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
 			panel1.SuspendLayout();
@@ -60,6 +64,9 @@
 			panel3.SuspendLayout();
 			panel4.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)SellersListTable).BeginInit();
+			((System.ComponentModel.ISupportInitialize)SellerNameRequire).BeginInit();
+			((System.ComponentModel.ISupportInitialize)PhoneRequire).BeginInit();
+			((System.ComponentModel.ISupportInitialize)AddressRequire).BeginInit();
 			SuspendLayout();
 			// 
 			// pictureBox2
@@ -165,6 +172,7 @@
 			SellerName.Name = "SellerName";
 			SellerName.Size = new Size(381, 27);
 			SellerName.TabIndex = 1;
+			SellerName.TextChanged += SellerName_TextChanged;
 			// 
 			// label4
 			// 
@@ -192,6 +200,7 @@
 			Phone.Name = "Phone";
 			Phone.Size = new Size(381, 27);
 			Phone.TabIndex = 1;
+			Phone.TextChanged += Phone_TextChanged;
 			// 
 			// label5
 			// 
@@ -222,6 +231,7 @@
 			RichAddress.Size = new Size(381, 178);
 			RichAddress.TabIndex = 2;
 			RichAddress.Text = "";
+			RichAddress.TextChanged += RichAddress_TextChanged;
 			// 
 			// label6
 			// 
@@ -256,14 +266,14 @@
 			SellersListTable.BackgroundColor = SystemColors.Window;
 			SellersListTable.BorderStyle = BorderStyle.None;
 			SellersListTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle1.BackColor = SystemColors.Window;
-			dataGridViewCellStyle1.Font = new Font("Segoe UI", 10F);
-			dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
-			dataGridViewCellStyle1.SelectionBackColor = SystemColors.ControlLight;
-			dataGridViewCellStyle1.SelectionForeColor = Color.Black;
-			dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-			SellersListTable.DefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle3.BackColor = SystemColors.Window;
+			dataGridViewCellStyle3.Font = new Font("Segoe UI", 10F);
+			dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+			dataGridViewCellStyle3.SelectionBackColor = SystemColors.ControlLight;
+			dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+			dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+			SellersListTable.DefaultCellStyle = dataGridViewCellStyle3;
 			SellersListTable.GridColor = SystemColors.Window;
 			SellersListTable.Location = new Point(28, 105);
 			SellersListTable.MultiSelect = false;
@@ -324,6 +334,18 @@
 			BtnDelete.Visible = false;
 			BtnDelete.Click += BtnDelete_Click;
 			// 
+			// SellerNameRequire
+			// 
+			SellerNameRequire.ContainerControl = this;
+			// 
+			// PhoneRequire
+			// 
+			PhoneRequire.ContainerControl = this;
+			// 
+			// AddressRequire
+			// 
+			AddressRequire.ContainerControl = this;
+			// 
 			// Seller
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -358,6 +380,9 @@
 			panel4.ResumeLayout(false);
 			panel4.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)SellersListTable).EndInit();
+			((System.ComponentModel.ISupportInitialize)SellerNameRequire).EndInit();
+			((System.ComponentModel.ISupportInitialize)PhoneRequire).EndInit();
+			((System.ComponentModel.ISupportInitialize)AddressRequire).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -388,5 +413,8 @@
 		private Label SellerslRows;
 		private Button BtnCancel;
 		private Button BtnDelete;
+		private ErrorProvider SellerNameRequire;
+		private ErrorProvider PhoneRequire;
+		private ErrorProvider AddressRequire;
 	}
 }

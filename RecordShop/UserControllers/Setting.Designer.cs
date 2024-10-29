@@ -32,15 +32,13 @@
 			pictureBox2 = new PictureBox();
 			label2 = new Label();
 			button7 = new Button();
-			VinylId = new TextBox();
+			UserId = new TextBox();
 			label1 = new Label();
 			label3 = new Label();
-			textBox1 = new TextBox();
+			Username = new TextBox();
 			label4 = new Label();
-			textBox2 = new TextBox();
-			checkBox1 = new CheckBox();
-			SearchType = new ComboBox();
-			label5 = new Label();
+			Password = new TextBox();
+			HidePassword = new CheckBox();
 			((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
 			SuspendLayout();
 			// 
@@ -72,17 +70,17 @@
 			button7.TabIndex = 9;
 			button7.UseVisualStyleBackColor = false;
 			// 
-			// VinylId
+			// UserId
 			// 
-			VinylId.BackColor = SystemColors.Window;
-			VinylId.Enabled = false;
-			VinylId.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			VinylId.Location = new Point(393, 191);
-			VinylId.Name = "VinylId";
-			VinylId.ReadOnly = true;
-			VinylId.Size = new Size(164, 27);
-			VinylId.TabIndex = 12;
-			VinylId.TextAlign = HorizontalAlignment.Center;
+			UserId.BackColor = SystemColors.Window;
+			UserId.Enabled = false;
+			UserId.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			UserId.Location = new Point(393, 191);
+			UserId.Name = "UserId";
+			UserId.ReadOnly = true;
+			UserId.Size = new Size(164, 27);
+			UserId.TabIndex = 12;
+			UserId.TextAlign = HorizontalAlignment.Center;
 			// 
 			// label1
 			// 
@@ -104,17 +102,16 @@
 			label3.TabIndex = 13;
 			label3.Text = "Username";
 			// 
-			// textBox1
+			// Username
 			// 
-			textBox1.BackColor = SystemColors.Window;
-			textBox1.Enabled = false;
-			textBox1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			textBox1.Location = new Point(393, 254);
-			textBox1.Name = "textBox1";
-			textBox1.ReadOnly = true;
-			textBox1.Size = new Size(360, 27);
-			textBox1.TabIndex = 12;
-			textBox1.TextAlign = HorizontalAlignment.Center;
+			Username.BackColor = SystemColors.Window;
+			Username.Enabled = false;
+			Username.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			Username.Location = new Point(393, 254);
+			Username.Name = "Username";
+			Username.ReadOnly = true;
+			Username.Size = new Size(360, 27);
+			Username.TabIndex = 12;
 			// 
 			// label4
 			// 
@@ -126,63 +123,41 @@
 			label4.TabIndex = 13;
 			label4.Text = "Password";
 			// 
-			// textBox2
+			// Password
 			// 
-			textBox2.BackColor = SystemColors.Window;
-			textBox2.Enabled = false;
-			textBox2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			textBox2.Location = new Point(393, 317);
-			textBox2.Name = "textBox2";
-			textBox2.ReadOnly = true;
-			textBox2.Size = new Size(225, 27);
-			textBox2.TabIndex = 12;
-			textBox2.TextAlign = HorizontalAlignment.Center;
-			textBox2.UseSystemPasswordChar = true;
+			Password.BackColor = SystemColors.Window;
+			Password.Enabled = false;
+			Password.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			Password.Location = new Point(393, 317);
+			Password.Name = "Password";
+			Password.ReadOnly = true;
+			Password.Size = new Size(225, 27);
+			Password.TabIndex = 12;
+			Password.UseSystemPasswordChar = true;
 			// 
-			// checkBox1
+			// HidePassword
 			// 
-			checkBox1.AutoSize = true;
-			checkBox1.Font = new Font("Segoe UI", 11.25F);
-			checkBox1.Location = new Point(635, 319);
-			checkBox1.Name = "checkBox1";
-			checkBox1.Size = new Size(60, 24);
-			checkBox1.TabIndex = 14;
-			checkBox1.Text = "Hide";
-			checkBox1.UseVisualStyleBackColor = true;
-			// 
-			// SearchType
-			// 
-			SearchType.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			SearchType.FormattingEnabled = true;
-			SearchType.Items.AddRange(new object[] { "Name", "Band", "Genre" });
-			SearchType.Location = new Point(978, 253);
-			SearchType.Name = "SearchType";
-			SearchType.Size = new Size(160, 28);
-			SearchType.TabIndex = 15;
-			// 
-			// label5
-			// 
-			label5.AutoSize = true;
-			label5.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			label5.Location = new Point(897, 257);
-			label5.Name = "label5";
-			label5.Size = new Size(73, 20);
-			label5.TabIndex = 13;
-			label5.Text = "User Type";
+			HidePassword.AutoSize = true;
+			HidePassword.Font = new Font("Segoe UI", 11.25F);
+			HidePassword.Location = new Point(635, 319);
+			HidePassword.Name = "HidePassword";
+			HidePassword.Size = new Size(60, 24);
+			HidePassword.TabIndex = 14;
+			HidePassword.Text = "Hide";
+			HidePassword.UseVisualStyleBackColor = true;
+			HidePassword.CheckedChanged += HidePassword_CheckedChanged;
 			// 
 			// Setting
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = SystemColors.Window;
-			Controls.Add(SearchType);
-			Controls.Add(checkBox1);
-			Controls.Add(textBox2);
+			Controls.Add(HidePassword);
+			Controls.Add(Password);
 			Controls.Add(label4);
-			Controls.Add(textBox1);
-			Controls.Add(label5);
+			Controls.Add(Username);
 			Controls.Add(label3);
-			Controls.Add(VinylId);
+			Controls.Add(UserId);
 			Controls.Add(label1);
 			Controls.Add(pictureBox2);
 			Controls.Add(label2);
@@ -199,14 +174,12 @@
 		private PictureBox pictureBox2;
 		private Label label2;
 		private Button button7;
-		public TextBox VinylId;
+		public TextBox UserId;
 		private Label label1;
 		private Label label3;
-		public TextBox textBox1;
+		public TextBox Username;
 		private Label label4;
-		public TextBox textBox2;
-		private CheckBox checkBox1;
-		private ComboBox SearchType;
-		private Label label5;
+		public TextBox Password;
+		private CheckBox HidePassword;
 	}
 }

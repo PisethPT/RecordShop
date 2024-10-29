@@ -370,6 +370,16 @@ namespace RecordShop.UserControllers
 							context.SaveChanges();
 						}
 
+						var saleDetail = context.SaleDetails.Where(s => s.VinylId.Equals(vinyl.VinylId)).ToList();
+						if(saleDetail is not null)
+						{
+							foreach (var sale in saleDetail)
+							{
+								context.SaleDetails.Remove(sale);
+								context.SaveChanges();
+							}
+						}
+
 						context.Vinyls.Remove(vinyl);
 						context.SaveChanges();
 
